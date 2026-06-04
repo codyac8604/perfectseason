@@ -9,157 +9,242 @@
 <meta property="og:type" content="website">
 <title>Perfect Season</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap');
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Oswald',sans-serif;background:#0a0f1a;color:#e8e0d0;min-height:100vh;display:flex;flex-direction:column}
-  .game-wrap{max-width:760px;margin:0 auto;padding:24px 16px 0;flex:1;width:100%}
-  .header{text-align:center;margin-bottom:28px;padding-top:8px}
-  .logo{font-size:42px;font-weight:700;letter-spacing:0.08em;color:#c8a84b;line-height:1;text-transform:uppercase;cursor:pointer}
-  .logo span{color:#fff}
-  .tagline{font-family:'Source Serif 4',serif;font-style:italic;font-weight:300;font-size:14px;color:#8a8070;margin-top:6px;letter-spacing:0.04em}
-  .site-footer{background:#080c14;border-top:1px solid #1e2d45;padding:20px 16px;margin-top:40px}
-  .footer-inner{max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:12px}
-  .footer-nav{display:flex;gap:0;align-items:center}
-  .footer-link{color:#5a6070;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;padding:0 14px;transition:color 0.2s;background:none;border:none;font-family:'Oswald',sans-serif}
-  .footer-link:hover{color:#c8a84b}
-  .footer-divider{color:#2a3548;font-size:11px}
-  .footer-disclaimer{font-family:'Source Serif 4',serif;font-style:italic;font-weight:300;font-size:11px;color:#3a4050;text-align:center;max-width:600px;line-height:1.6}
-  .footer-copy{font-size:10px;color:#2a3040;letter-spacing:0.1em}
-  .legal-page{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:32px;margin-bottom:40px}
-  .legal-back{display:flex;align-items:center;gap:8px;color:#c8a84b;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;margin-bottom:24px;background:none;border:none;font-family:'Oswald',sans-serif;padding:0}
-  .legal-back:hover{color:#e8c870}
-  .legal-title{font-size:28px;font-weight:700;color:#fff;letter-spacing:0.05em;margin-bottom:6px}
-  .legal-updated{font-size:11px;color:#5a6070;letter-spacing:0.1em;margin-bottom:28px}
-  .legal-section{margin-bottom:24px}
-  .legal-section-title{font-size:13px;font-weight:600;color:#c8a84b;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px}
-  .legal-body{font-family:'Source Serif 4',serif;font-weight:300;font-size:14px;color:#a0a8b8;line-height:1.8}
-  .legal-body p{margin-bottom:10px}
-  .legal-body ul{margin:8px 0 10px 20px}
-  .legal-body ul li{margin-bottom:6px}
-  .legal-body a{color:#c8a84b;text-decoration:none}
-  .legal-body a:hover{text-decoration:underline}
-  .legal-highlight{background:#0d1420;border-left:3px solid #c8a84b;padding:12px 16px;border-radius:0 6px 6px 0;margin-bottom:16px}
-  .legal-highlight p{margin:0;font-family:'Source Serif 4',serif;font-weight:300;font-size:14px;color:#c8b870;line-height:1.7}
-  .scoreboard{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
-  .record{font-size:28px;font-weight:700;color:#c8a84b;letter-spacing:0.05em}
-  .record-label{font-size:10px;color:#5a6070;letter-spacing:0.12em;text-transform:uppercase;margin-top:2px}
-  .round-pips{display:flex;gap:6px}
-  .pip{width:10px;height:10px;border-radius:50%;border:1.5px solid #2a3548;background:transparent;transition:all 0.3s}
-  .pip.filled{background:#c8a84b;border-color:#c8a84b}
-  .pip.current{border-color:#c8a84b;animation:pulse 1.5s infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-  .strength-bar-wrap{flex:1;margin:0 24px}
-  .strength-label{font-size:10px;color:#5a6070;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;text-align:center}
-  .strength-bar{height:6px;background:#1a2233;border-radius:3px;overflow:hidden}
-  .strength-fill{height:100%;background:linear-gradient(90deg,#c8a84b,#e8c870);border-radius:3px;transition:width 0.6s ease;width:0%}
-  .slot-machine{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:20px;margin-bottom:20px;text-align:center}
-  .slot-title{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:14px}
-  .slot-display{display:flex;gap:12px;justify-content:center;margin-bottom:14px}
-  .slot-reel{background:#0d1420;border:1px solid #2a3548;border-radius:8px;padding:12px 20px;min-width:140px}
-  .slot-reel-label{font-size:9px;color:#5a6070;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px}
-  .slot-reel-value{font-size:18px;font-weight:600;color:#c8a84b;min-height:28px}
-  .position-badge{display:inline-block;background:#1a2a1a;border:1px solid #2a4a2a;color:#5ab85a;font-size:11px;font-weight:600;letter-spacing:0.1em;padding:4px 10px;border-radius:4px;margin-bottom:14px}
-  .skip-row{display:flex;gap:10px;justify-content:center;margin-bottom:14px}
-  .skip-btn{background:#0d1420;border:1px solid #2a3548;color:#8a9ab0;border-radius:6px;padding:8px 18px;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:3px}
-  .skip-btn:hover:not(:disabled){border-color:#c8a84b;color:#c8a84b}
-  .skip-btn:disabled{opacity:0.25;cursor:not-allowed}
-  .skip-btn .skip-label{font-size:9px;color:#5a6070;letter-spacing:0.12em}
-  .skip-btn .skip-uses{font-size:14px;font-weight:600}
-  .spin-btn{background:#c8a84b;color:#0a0f1a;border:none;border-radius:6px;padding:10px 28px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-  .spin-btn:hover{background:#e8c870;transform:translateY(-1px)}
-  .spin-btn:disabled{background:#3a3020;color:#5a5040;cursor:not-allowed;transform:none}
-  .player-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px}
-  .player-card{background:#111827;border:1px solid #1e2d45;border-radius:8px;padding:12px;cursor:pointer;transition:all 0.2s}
-  .player-card:hover{border-color:#c8a84b;background:#151f30}
-  .player-name{font-size:14px;font-weight:600;color:#fff;margin-bottom:3px;letter-spacing:0.02em}
-  .player-meta{font-size:10px;color:#5a6070;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px}
-  .player-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}
-  .stat-box{background:#0d1420;border-radius:4px;padding:4px 3px;text-align:center}
-  .stat-val{font-size:13px;font-weight:600;color:#c8a84b;line-height:1}
-  .stat-lbl{font-size:8px;color:#5a6070;letter-spacing:0.08em;text-transform:uppercase;margin-top:1px}
-  .select-btn{width:100%;margin-top:8px;background:transparent;border:1px solid #2a3548;color:#8a9ab0;border-radius:5px;padding:6px;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-  .player-card:hover .select-btn{background:#c8a84b;color:#0a0f1a;border-color:#c8a84b}
-  .pagination{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px}
-  .page-btn{background:transparent;border:1px solid #2a3548;color:#8a9ab0;border-radius:5px;padding:6px 16px;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-  .page-btn:hover:not(:disabled){border-color:#c8a84b;color:#c8a84b}
-  .page-btn:disabled{opacity:0.3;cursor:not-allowed}
-  .page-indicator{font-size:11px;color:#5a6070;letter-spacing:0.1em}
-  .roster-section{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:16px 20px;margin-bottom:20px}
-  .roster-title{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:14px}
-  .roster-slots{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
-  .roster-slot{background:#0d1420;border:1px dashed #1e2d45;border-radius:6px;padding:10px 6px;text-align:center;min-height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .roster-slot.filled{border-style:solid;border-color:#2a3548}
-  .roster-slot-pos{font-size:9px;color:#5a6070;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
-  .roster-slot-name{font-size:10px;color:#e8e0d0;font-weight:500;line-height:1.2;text-align:center}
-  .roster-slot-era{font-size:9px;color:#c8a84b;margin-top:3px}
-  .simulate-btn{width:100%;background:#c8a84b;color:#0a0f1a;border:none;border-radius:8px;padding:14px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-bottom:20px}
-  .simulate-btn:hover{background:#e8c870}
-  .simulate-btn:disabled{background:#2a2010;color:#5a5040;cursor:not-allowed}
-  .results-panel{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:24px;margin-bottom:16px}
-  .results-record{font-size:56px;font-weight:700;letter-spacing:0.05em;line-height:1;text-align:center}
-  .results-headline{font-family:'Source Serif 4',serif;font-style:italic;font-weight:300;font-size:19px;color:#e8e0d0;margin-top:8px;margin-bottom:20px;text-align:center}
-  .result-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
-  .result-card{background:#0d1420;border-radius:6px;padding:10px 4px;text-align:center}
-  .result-card-val{font-size:20px;font-weight:600;color:#c8a84b}
-  .result-card-lbl{font-size:9px;color:#5a6070;letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
-  .season-stats{margin-bottom:20px}
-  .season-stats-title{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:12px;padding-top:16px;border-top:1px solid #1e2d45}
-  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .pos-stat-card{background:#0d1420;border-radius:8px;padding:12px 14px}
-  .pos-stat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-  .pos-stat-name{font-size:12px;font-weight:600;color:#fff}
-  .pos-stat-pos{font-size:9px;background:#1a2a1a;border:1px solid #2a4a2a;color:#5ab85a;padding:2px 7px;border-radius:3px;letter-spacing:0.1em}
-  .pos-stat-rows{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
-  .pos-stat-box{text-align:center}
-  .pos-stat-val{font-size:14px;font-weight:600;color:#c8a84b}
-  .pos-stat-lbl{font-size:8px;color:#5a6070;letter-spacing:0.08em;text-transform:uppercase;margin-top:1px}
-  .game-log{border-top:1px solid #1e2d45;padding-top:16px}
-  .game-log-title{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:10px}
-  .log-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
-  .game-log-item{font-size:11px;padding:4px 6px;border-radius:4px;display:flex;justify-content:space-between}
-  .game-log-item.loss{color:#8a4040;background:#150d0d}
-  .game-log-item.win{color:#4a8a4a;background:#0d150d}
-  .play-again-btn{width:100%;background:transparent;border:1px solid #2a3548;color:#8a9ab0;border-radius:8px;padding:12px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-  .play-again-btn:hover{border-color:#c8a84b;color:#c8a84b}
-  .section-header{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:12px}
-  .era-badge{display:inline-block;background:#1a2233;color:#5a7ab0;font-size:10px;padding:2px 8px;border-radius:3px;letter-spacing:0.1em;margin-left:6px}
-  .intro-panel{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:24px;margin-bottom:24px;text-align:center}
-  .intro-title{font-size:11px;letter-spacing:0.2em;color:#5a6070;text-transform:uppercase;margin-bottom:16px}
-  .intro-rules{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;text-align:left}
-  .rule-item{background:#0d1420;border-radius:6px;padding:12px}
-  .rule-num{font-size:22px;font-weight:700;color:#c8a84b;line-height:1;margin-bottom:4px}
-  .rule-text{font-size:11px;color:#8a9ab0;line-height:1.5;font-weight:400;font-family:'Source Serif 4',serif;font-style:italic}
-  .start-btn{background:#c8a84b;color:#0a0f1a;border:none;border-radius:8px;padding:14px 40px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-  .start-btn:hover{background:#e8c870;transform:translateY(-1px)}
-  .hidden{display:none}
-  .fade-in{animation:fadeIn 0.4s ease}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Oswald',sans-serif;background:#0a0f1a;color:#e8e0d0;min-height:100vh;display:flex;flex-direction:column}
+.game-wrap{max-width:780px;margin:0 auto;padding:24px 16px 0;flex:1;width:100%}
+.header{text-align:center;margin-bottom:28px;padding-top:8px}
+.logo{font-size:42px;font-weight:700;letter-spacing:0.08em;color:#c8a84b;line-height:1;text-transform:uppercase;cursor:pointer}
+.logo span{color:#fff}
+.tagline{font-family:'Source Serif 4',serif;font-style:italic;font-weight:300;font-size:14px;color:#8a8070;margin-top:6px;letter-spacing:0.04em}
+
+/* MODE SELECTOR */
+.mode-panel{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:24px;margin-bottom:24px;text-align:center}
+.mode-title{font-size:11px;letter-spacing:0.2em;color:#5a6070;text-transform:uppercase;margin-bottom:20px}
+.mode-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:0}
+.mode-card{background:#0d1420;border:1px solid #1e2d45;border-radius:8px;padding:20px 16px;cursor:pointer;transition:all 0.2s;text-align:left}
+.mode-card:hover{border-color:#c8a84b;background:#111827}
+.mode-card.selected{border-color:#c8a84b;background:#151f2a}
+.mode-card-icon{font-size:28px;margin-bottom:10px}
+.mode-card-name{font-size:16px;font-weight:600;color:#c8a84b;letter-spacing:0.05em;margin-bottom:6px}
+.mode-card-desc{font-family:'Source Serif 4',serif;font-style:italic;font-weight:300;font-size:12px;color:#8a9ab0;line-height:1.5}
+.start-btn{background:#c8a84b;color:#0a0f1a;border:none;border-radius:8px;padding:14px 40px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-top:20px}
+.start-btn:hover{background:#e8c870;transform:translateY(-1px)}
+
+/* INTRO */
+.intro-panel{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:24px;margin-bottom:20px;text-align:center}
+.intro-title{font-size:11px;letter-spacing:0.2em;color:#5a6070;text-transform:uppercase;margin-bottom:16px}
+.intro-rules{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0;text-align:left}
+.rule-item{background:#0d1420;border-radius:6px;padding:12px}
+.rule-num{font-size:22px;font-weight:700;color:#c8a84b;line-height:1;margin-bottom:4px}
+.rule-text{font-size:11px;color:#8a9ab0;line-height:1.5;font-weight:400;font-family:'Source Serif 4',serif;font-style:italic}
+
+/* SCOREBOARD */
+.scoreboard{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.record{font-size:28px;font-weight:700;color:#c8a84b;letter-spacing:0.05em}
+.record-label{font-size:10px;color:#5a6070;letter-spacing:0.12em;text-transform:uppercase;margin-top:2px}
+.round-pips{display:flex;gap:6px}
+.pip{width:10px;height:10px;border-radius:50%;border:1.5px solid #2a3548;background:transparent;transition:all 0.3s}
+.pip.filled{background:#c8a84b;border-color:#c8a84b}
+.pip.current{border-color:#c8a84b;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.strength-bar-wrap{flex:1;margin:0 24px}
+.strength-label{font-size:10px;color:#5a6070;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;text-align:center}
+.strength-bar{height:6px;background:#1a2233;border-radius:3px;overflow:hidden}
+.strength-fill{height:100%;background:linear-gradient(90deg,#c8a84b,#e8c870);border-radius:3px;transition:width 0.6s ease;width:0%}
+.mode-badge{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-top:4px;display:inline-block}
+.mode-badge.classic{background:#1a2a1a;color:#5ab85a;border:1px solid #2a4a2a}
+.mode-badge.filmroom{background:#1a1a2a;color:#5a7ab0;border:1px solid #2a3a5a}
+
+/* SLOT MACHINE */
+.slot-machine{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:20px;margin-bottom:20px;text-align:center}
+.slot-title{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:14px}
+.slot-display{display:flex;gap:12px;justify-content:center;margin-bottom:14px}
+.slot-reel{background:#0d1420;border:1px solid #2a3548;border-radius:8px;padding:12px 20px;min-width:140px}
+.slot-reel-label{font-size:9px;color:#5a6070;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px}
+.slot-reel-value{font-size:18px;font-weight:600;color:#c8a84b;min-height:28px}
+.position-badge{display:inline-block;background:#1a2a1a;border:1px solid #2a4a2a;color:#5ab85a;font-size:11px;font-weight:600;letter-spacing:0.1em;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.skip-row{display:flex;gap:10px;justify-content:center;margin-bottom:0}
+.skip-btn{background:#0d1420;border:1px solid #2a3548;color:#8a9ab0;border-radius:6px;padding:8px 18px;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:3px}
+.skip-btn:hover:not(:disabled){border-color:#c8a84b;color:#c8a84b}
+.skip-btn:disabled{opacity:0.25;cursor:not-allowed}
+.skip-btn .skip-label{font-size:9px;color:#5a6070;letter-spacing:0.12em}
+.skip-btn .skip-uses{font-size:14px;font-weight:600}
+.spin-btn{background:#c8a84b;color:#0a0f1a;border:none;border-radius:6px;padding:10px 28px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.spin-btn:hover{background:#e8c870;transform:translateY(-1px)}
+.spin-btn:disabled{background:#3a3020;color:#5a5040;cursor:not-allowed;transform:none}
+
+/* PLAYER GRID */
+.pick-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.section-header{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase}
+.sort-bar{display:flex;gap:6px;align-items:center}
+.sort-label{font-size:9px;color:#5a6070;letter-spacing:0.1em;text-transform:uppercase}
+.sort-btn{background:#0d1420;border:1px solid #1e2d45;color:#8a9ab0;border-radius:4px;padding:4px 10px;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.sort-btn:hover{border-color:#c8a84b;color:#c8a84b}
+.sort-btn.active{border-color:#c8a84b;color:#c8a84b;background:#1a1e2a}
+.player-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px}
+.player-card{background:#111827;border:1px solid #1e2d45;border-radius:8px;padding:12px;cursor:pointer;transition:all 0.2s;position:relative}
+.player-card:hover{border-color:#c8a84b;background:#151f30}
+.peak-tag{position:absolute;top:8px;right:8px;font-size:8px;background:#1a2233;color:#5a7ab0;padding:2px 6px;border-radius:3px;letter-spacing:0.08em;text-transform:uppercase}
+.player-name{font-size:14px;font-weight:600;color:#fff;margin-bottom:3px;letter-spacing:0.02em;padding-right:40px}
+.player-meta{font-size:10px;color:#5a6070;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px}
+.player-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}
+.stat-box{background:#0d1420;border-radius:4px;padding:4px 3px;text-align:center}
+.stat-val{font-size:13px;font-weight:600;color:#c8a84b;line-height:1}
+.stat-lbl{font-size:8px;color:#5a6070;letter-spacing:0.08em;text-transform:uppercase;margin-top:1px}
+.stat-hidden{font-size:18px;color:#2a3548;line-height:1}
+.select-btn{width:100%;margin-top:8px;background:transparent;border:1px solid #2a3548;color:#8a9ab0;border-radius:5px;padding:6px;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.player-card:hover .select-btn{background:#c8a84b;color:#0a0f1a;border-color:#c8a84b}
+.rating-bar{height:3px;background:#1a2233;border-radius:2px;margin-top:8px;overflow:hidden}
+.rating-fill{height:100%;background:linear-gradient(90deg,#c8a84b,#e8c870);border-radius:2px}
+
+/* PAGINATION */
+.pagination{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px}
+.page-btn{background:transparent;border:1px solid #2a3548;color:#8a9ab0;border-radius:5px;padding:6px 16px;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.page-btn:hover:not(:disabled){border-color:#c8a84b;color:#c8a84b}
+.page-btn:disabled{opacity:0.3;cursor:not-allowed}
+.page-indicator{font-size:11px;color:#5a6070;letter-spacing:0.1em}
+
+/* ROSTER */
+.roster-section{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:16px 20px;margin-bottom:20px}
+.roster-title{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:14px}
+.roster-slots{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.roster-slot{background:#0d1420;border:1px dashed #1e2d45;border-radius:6px;padding:10px 6px;text-align:center;min-height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.roster-slot.filled{border-style:solid;border-color:#2a3548}
+.roster-slot-pos{font-size:9px;color:#5a6070;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+.roster-slot-name{font-size:10px;color:#e8e0d0;font-weight:500;line-height:1.2;text-align:center}
+.roster-slot-era{font-size:9px;color:#c8a84b;margin-top:3px}
+.simulate-btn{width:100%;background:#c8a84b;color:#0a0f1a;border:none;border-radius:8px;padding:14px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-bottom:20px}
+.simulate-btn:hover{background:#e8c870}
+.simulate-btn:disabled{background:#2a2010;color:#5a5040;cursor:not-allowed}
+
+/* RESULTS */
+.results-panel{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:24px;margin-bottom:16px}
+.results-record{font-size:56px;font-weight:700;letter-spacing:0.05em;line-height:1;text-align:center}
+.results-headline{font-family:'Source Serif 4',serif;font-style:italic;font-weight:300;font-size:19px;color:#e8e0d0;margin-top:8px;margin-bottom:20px;text-align:center}
+.result-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
+.result-card{background:#0d1420;border-radius:6px;padding:10px 4px;text-align:center}
+.result-card-val{font-size:20px;font-weight:600;color:#c8a84b}
+.result-card-lbl{font-size:9px;color:#5a6070;letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
+.season-stats{margin-bottom:20px}
+.season-stats-title{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:12px;padding-top:16px;border-top:1px solid #1e2d45}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pos-stat-card{background:#0d1420;border-radius:8px;padding:12px 14px}
+.pos-stat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.pos-stat-name{font-size:12px;font-weight:600;color:#fff}
+.pos-stat-pos{font-size:9px;background:#1a2a1a;border:1px solid #2a4a2a;color:#5ab85a;padding:2px 7px;border-radius:3px;letter-spacing:0.1em}
+.pos-stat-rows{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.pos-stat-box{text-align:center}
+.pos-stat-val{font-size:14px;font-weight:600;color:#c8a84b}
+.pos-stat-lbl{font-size:8px;color:#5a6070;letter-spacing:0.08em;text-transform:uppercase;margin-top:1px}
+.game-log{border-top:1px solid #1e2d45;padding-top:16px}
+.game-log-title{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:10px}
+.log-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.game-log-item{font-size:11px;padding:4px 6px;border-radius:4px;display:flex;justify-content:space-between}
+.game-log-item.loss{color:#8a4040;background:#150d0d}
+.game-log-item.win{color:#4a8a4a;background:#0d150d}
+
+/* SHARE CARD */
+.share-section{border-top:1px solid #1e2d45;padding-top:16px;margin-top:4px}
+.share-title{font-size:10px;letter-spacing:0.18em;color:#5a6070;text-transform:uppercase;margin-bottom:12px}
+.share-card{background:#0d1420;border:1px solid #1e2d45;border-radius:8px;padding:14px 16px;margin-bottom:12px;font-family:'Source Serif 4',serif;font-size:13px;color:#c8b870;line-height:1.7}
+.share-btn{background:#1a2a3a;border:1px solid #2a4a6a;color:#5a9ab0;border-radius:6px;padding:9px 20px;font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;width:100%}
+.share-btn:hover{background:#c8a84b;color:#0a0f1a;border-color:#c8a84b}
+.share-btn.copied{background:#1a3a1a;border-color:#2a6a2a;color:#5ab85a}
+
+.play-again-btn{width:100%;background:transparent;border:1px solid #2a3548;color:#8a9ab0;border-radius:8px;padding:12px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-top:12px}
+.play-again-btn:hover{border-color:#c8a84b;color:#c8a84b}
+
+/* LEGAL */
+.legal-page{background:#111827;border:1px solid #1e2d45;border-radius:10px;padding:32px;margin-bottom:40px}
+.legal-back{display:flex;align-items:center;gap:8px;color:#c8a84b;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;margin-bottom:24px;background:none;border:none;font-family:'Oswald',sans-serif;padding:0}
+.legal-back:hover{color:#e8c870}
+.legal-title{font-size:28px;font-weight:700;color:#fff;letter-spacing:0.05em;margin-bottom:6px}
+.legal-updated{font-size:11px;color:#5a6070;letter-spacing:0.1em;margin-bottom:28px}
+.legal-section{margin-bottom:24px}
+.legal-section-title{font-size:13px;font-weight:600;color:#c8a84b;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px}
+.legal-body{font-family:'Source Serif 4',serif;font-weight:300;font-size:14px;color:#a0a8b8;line-height:1.8}
+.legal-body p{margin-bottom:10px}
+.legal-body ul{margin:8px 0 10px 20px}
+.legal-body ul li{margin-bottom:6px}
+.legal-body a{color:#c8a84b;text-decoration:none}
+.legal-body a:hover{text-decoration:underline}
+.legal-highlight{background:#0d1420;border-left:3px solid #c8a84b;padding:12px 16px;border-radius:0 6px 6px 0;margin-bottom:16px}
+.legal-highlight p{margin:0;font-family:'Source Serif 4',serif;font-weight:300;font-size:14px;color:#c8b870;line-height:1.7}
+
+/* FOOTER */
+.site-footer{background:#080c14;border-top:1px solid #1e2d45;padding:20px 16px;margin-top:40px}
+.footer-inner{max-width:780px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:12px}
+.footer-nav{display:flex;gap:0;align-items:center}
+.footer-link{color:#5a6070;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;padding:0 14px;transition:color 0.2s;background:none;border:none;font-family:'Oswald',sans-serif}
+.footer-link:hover{color:#c8a84b}
+.footer-divider{color:#2a3548;font-size:11px}
+.footer-disclaimer{font-family:'Source Serif 4',serif;font-style:italic;font-weight:300;font-size:11px;color:#3a4050;text-align:center;max-width:600px;line-height:1.6}
+.footer-copy{font-size:10px;color:#2a3040;letter-spacing:0.1em}
+
+.era-badge{display:inline-block;background:#1a2233;color:#5a7ab0;font-size:10px;padding:2px 8px;border-radius:3px;letter-spacing:0.1em;margin-left:6px}
+.hidden{display:none}
+.fade-in{animation:fadeIn 0.4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 <div class="game-wrap">
   <div class="header">
-    <div class="logo" onclick="showPage('game')"><span>Perfect</span> Season</div>
+    <div class="logo" onclick="showPage('intro')"><span>Perfect</span> Season</div>
     <div class="tagline">Build the greatest NFL roster ever assembled. Go 17-0.</div>
   </div>
+
+  <!-- INTRO -->
   <div id="intro-screen">
     <div class="intro-panel fade-in">
       <div class="intro-title">How to play</div>
       <div class="intro-rules">
-        <div class="rule-item"><div class="rule-num">6</div><div class="rule-text">Draft one player per era across QB, RB, WR, TE, DL, and DB</div></div>
+        <div class="rule-item"><div class="rule-num">6</div><div class="rule-text">Draft one player per era across QB, RB, WR, TE, DB, and S</div></div>
         <div class="rule-item"><div class="rule-num">5</div><div class="rule-text">Five eras: 1970s through 2010s — each used only once</div></div>
         <div class="rule-item"><div class="rule-num">2</div><div class="rule-text">One team skip and one era skip — use them wisely</div></div>
         <div class="rule-item"><div class="rule-num">17-0</div><div class="rule-text">Maximize all categories across every position to achieve perfection</div></div>
       </div>
+    </div>
+    <div class="mode-panel fade-in">
+      <div class="mode-title">Choose Your Mode</div>
+      <div class="mode-cards">
+        <div class="mode-card selected" id="mode-classic" onclick="selectMode('classic')">
+          <div class="mode-card-icon">📋</div>
+          <div class="mode-card-name">Classic</div>
+          <div class="mode-card-desc">Draft with full player stats visible — make informed picks based on peak-season numbers.</div>
+        </div>
+        <div class="mode-card" id="mode-filmroom" onclick="selectMode('filmroom')">
+          <div class="mode-card-icon">🎬</div>
+          <div class="mode-card-name">Film Room</div>
+          <div class="mode-card-desc">Stats hidden — draft by memory and football knowledge alone. For the true die-hards.</div>
+        </div>
+      </div>
       <button class="start-btn" onclick="startGame()">Start Draft</button>
     </div>
   </div>
+
+  <!-- GAME -->
   <div id="game-screen" class="hidden">
     <div class="scoreboard">
-      <div><div class="record" id="current-record">0-0</div><div class="record-label">Season Record</div></div>
-      <div class="strength-bar-wrap"><div class="strength-label">Roster Strength</div><div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div></div>
-      <div><div class="round-pips"><div class="pip current"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div><div class="record-label" style="text-align:right;margin-top:4px">Round <span id="round-num">1</span>/6</div></div>
+      <div>
+        <div class="record" id="current-record">0-0</div>
+        <div class="record-label">Season Record</div>
+        <div class="mode-badge" id="mode-badge">Classic</div>
+      </div>
+      <div class="strength-bar-wrap">
+        <div class="strength-label">Roster Strength</div>
+        <div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+      </div>
+      <div>
+        <div class="round-pips" id="round-pips">
+          <div class="pip current"></div><div class="pip"></div><div class="pip"></div>
+          <div class="pip"></div><div class="pip"></div><div class="pip"></div>
+        </div>
+        <div class="record-label" style="text-align:right;margin-top:4px">Round <span id="round-num">1</span>/6</div>
+      </div>
     </div>
+
     <div class="slot-machine fade-in" id="slot-section">
       <div class="slot-title">Draft Slot</div>
       <div class="slot-display">
@@ -168,29 +253,52 @@
       </div>
       <div class="position-badge" id="position-badge">ROUND 1 · QB</div><br>
       <div class="skip-row">
-        <button class="skip-btn" id="skip-era-btn" onclick="skipEra()" disabled><span class="skip-uses" id="era-skips-left">1</span><span class="skip-label">Era Skip</span></button>
+        <button class="skip-btn" id="skip-era-btn" onclick="skipEra()" disabled>
+          <span class="skip-uses" id="era-skips-left">1</span>
+          <span class="skip-label">Era Skip</span>
+        </button>
         <button class="spin-btn" id="spin-btn" onclick="spinSlot()">Spin</button>
-        <button class="skip-btn" id="skip-team-btn" onclick="skipTeam()" disabled><span class="skip-uses" id="team-skips-left">1</span><span class="skip-label">Team Skip</span></button>
+        <button class="skip-btn" id="skip-team-btn" onclick="skipTeam()" disabled>
+          <span class="skip-uses" id="team-skips-left">1</span>
+          <span class="skip-label">Team Skip</span>
+        </button>
       </div>
     </div>
+
     <div id="pick-section" class="hidden">
-      <div class="section-header" id="pick-header">Select your player</div>
-      <div class="pagination" id="pagination"><button class="page-btn" id="prev-btn" onclick="changePage(-1)" disabled>Prev</button><span class="page-indicator" id="page-indicator">Page 1 of 2</span><button class="page-btn" id="next-btn" onclick="changePage(1)">Next</button></div>
+      <div class="pick-controls">
+        <div class="section-header" id="pick-header">Select your player</div>
+        <div class="sort-bar">
+          <span class="sort-label">Sort:</span>
+          <button class="sort-btn active" id="sort-rating" onclick="sortPlayers('rating')">Rating</button>
+          <button class="sort-btn" id="sort-stat1" onclick="sortPlayers('stat1')">—</button>
+          <button class="sort-btn" id="sort-stat2" onclick="sortPlayers('stat2')">—</button>
+          <button class="sort-btn" id="sort-name" onclick="sortPlayers('name')">A-Z</button>
+        </div>
+      </div>
+      <div class="pagination" id="pagination">
+        <button class="page-btn" id="prev-btn" onclick="changePage(-1)" disabled>Prev</button>
+        <span class="page-indicator" id="page-indicator">Page 1 of 2</span>
+        <button class="page-btn" id="next-btn" onclick="changePage(1)">Next</button>
+      </div>
       <div class="player-grid" id="player-grid"></div>
     </div>
+
     <div class="roster-section">
       <div class="roster-title">Your Roster</div>
-      <div class="roster-slots">
+      <div class="roster-slots" id="roster-slots">
         <div class="roster-slot" id="rslot-0"><div class="roster-slot-pos">QB</div><div class="roster-slot-name" style="color:#2a3548">—</div></div>
         <div class="roster-slot" id="rslot-1"><div class="roster-slot-pos">RB</div><div class="roster-slot-name" style="color:#2a3548">—</div></div>
         <div class="roster-slot" id="rslot-2"><div class="roster-slot-pos">WR</div><div class="roster-slot-name" style="color:#2a3548">—</div></div>
         <div class="roster-slot" id="rslot-3"><div class="roster-slot-pos">TE</div><div class="roster-slot-name" style="color:#2a3548">—</div></div>
-        <div class="roster-slot" id="rslot-4"><div class="roster-slot-pos">DL</div><div class="roster-slot-name" style="color:#2a3548">—</div></div>
-        <div class="roster-slot" id="rslot-5"><div class="roster-slot-pos">DB</div><div class="roster-slot-name" style="color:#2a3548">—</div></div>
+        <div class="roster-slot" id="rslot-4"><div class="roster-slot-pos">DB</div><div class="roster-slot-name" style="color:#2a3548">—</div></div>
+        <div class="roster-slot" id="rslot-5"><div class="roster-slot-pos">S</div><div class="roster-slot-name" style="color:#2a3548">—</div></div>
       </div>
     </div>
     <button class="simulate-btn" id="simulate-btn" disabled onclick="runSimulation()">Simulate Season</button>
   </div>
+
+  <!-- RESULTS -->
   <div id="results-screen" class="hidden">
     <div class="results-panel fade-in">
       <div class="results-record" id="final-record"></div>
@@ -198,12 +306,19 @@
       <div class="result-cards" id="result-cards"></div>
       <div class="season-stats"><div class="season-stats-title">Simulated Season Stats</div><div class="stats-grid" id="stats-grid"></div></div>
       <div class="game-log"><div class="game-log-title">Season Log</div><div class="log-grid" id="game-log-entries"></div></div>
+      <div class="share-section">
+        <div class="share-title">Share Your Result</div>
+        <div class="share-card" id="share-card"></div>
+        <button class="share-btn" id="share-btn" onclick="copyShare()">Copy & Share</button>
+      </div>
     </div>
     <button class="play-again-btn" onclick="resetGame()">Play Again</button>
   </div>
+
+  <!-- DISCLAIMER -->
   <div id="disclaimer-screen" class="hidden fade-in">
     <div class="legal-page">
-      <button class="legal-back" onclick="showPage('game')">← Back to Game</button>
+      <button class="legal-back" onclick="showPage('intro')">← Back to Game</button>
       <div class="legal-title">Disclaimer</div>
       <div class="legal-updated">Independent fan project</div>
       <div class="legal-highlight"><p>Perfect Season is an independent fan project and is not affiliated with, endorsed by, or sponsored by the National Football League, any NFL team, the NFL Players Association, or any individual player. All player names, statistics, and team references are used for entertainment purposes only.</p></div>
@@ -212,26 +327,28 @@
       <div class="legal-section"><div class="legal-section-title">Contact</div><div class="legal-body"><p>If you have a question or concern regarding the use of any content on this site, please contact us at <a href="mailto:info.myperfectseason@gmail.com">info.myperfectseason@gmail.com</a>.</p></div></div>
     </div>
   </div>
+
+  <!-- PRIVACY -->
   <div id="privacy-screen" class="hidden fade-in">
     <div class="legal-page">
-      <button class="legal-back" onclick="showPage('game')">← Back to Game</button>
+      <button class="legal-back" onclick="showPage('intro')">← Back to Game</button>
       <div class="legal-title">Privacy Policy</div>
       <div class="legal-updated">Last updated: June 2026</div>
       <div class="legal-highlight"><p>The short version: we do not collect your name, email address, or any personally identifying information. We do not sell data. We do not run ads.</p></div>
       <div class="legal-section"><div class="legal-section-title">Overview</div><div class="legal-body"><p>Perfect Season is a free, independent fan game. This policy explains what information is collected when you use this site and how it is handled.</p></div></div>
-      <div class="legal-section"><div class="legal-section-title">Information We Collect</div><div class="legal-body"><p>Our hosting provider (Vercel) may automatically log basic technical information when you visit, including your IP address, browser type, device type, referring URL, and pages visited. This information is used solely for operating and maintaining the site and is not linked to any individual identity.</p><p>Perfect Season does not require an account. All game activity — your draft selections, simulation results, and scores — is processed locally in your browser and is not transmitted to or stored on any server.</p><p>This site does not use tracking cookies or advertising cookies. No third-party analytics or advertising platforms are used.</p></div></div>
+      <div class="legal-section"><div class="legal-section-title">Information We Collect</div><div class="legal-body"><p>Our hosting provider (Vercel) may automatically log basic technical information when you visit, including your IP address, browser type, device type, referring URL, and pages visited. This information is used solely for operating and maintaining the site and is not linked to any individual identity.</p><p>Perfect Season does not require an account. All game activity is processed locally in your browser and is not transmitted to or stored on any server.</p><p>This site does not use tracking cookies or advertising cookies. No third-party analytics or advertising platforms are used.</p></div></div>
       <div class="legal-section"><div class="legal-section-title">Information We Do Not Collect</div><div class="legal-body"><p>We do not collect, store, or process:</p><ul><li>Your name, email address, or contact information</li><li>Payment or financial information</li><li>Location data beyond the general region inferred from your IP address by our hosting provider</li><li>Any information from children under 13 years of age</li></ul></div></div>
-      <div class="legal-section"><div class="legal-section-title">Third-Party Services</div><div class="legal-body"><p>This site is hosted on Vercel. Vercel's own privacy practices govern any technical data collected at the hosting level. You can review Vercel's privacy policy at <a href="https://vercel.com/legal/privacy-policy" target="_blank">vercel.com/legal/privacy-policy</a>. If you choose to support the project through a voluntary donation platform such as Ko-fi, that transaction is governed entirely by that platform's privacy policy.</p></div></div>
-      <div class="legal-section"><div class="legal-section-title">Children's Privacy</div><div class="legal-body"><p>Perfect Season is intended for general audiences. We do not knowingly collect any information from children under the age of 13. If you believe a child has submitted personal information through this site, please contact us and we will take steps to remove it.</p></div></div>
-      <div class="legal-section"><div class="legal-section-title">Changes to This Policy</div><div class="legal-body"><p>We may update this policy from time to time. Any changes will be posted on this page with an updated date at the top. Continued use of the site after changes are posted constitutes acceptance of the updated policy.</p></div></div>
+      <div class="legal-section"><div class="legal-section-title">Third-Party Services</div><div class="legal-body"><p>This site is hosted on Vercel. Vercel's own privacy practices govern any technical data collected at the hosting level. You can review Vercel's privacy policy at <a href="https://vercel.com/legal/privacy-policy" target="_blank">vercel.com/legal/privacy-policy</a>.</p></div></div>
+      <div class="legal-section"><div class="legal-section-title">Children's Privacy</div><div class="legal-body"><p>Perfect Season is intended for general audiences. We do not knowingly collect any information from children under the age of 13.</p></div></div>
       <div class="legal-section"><div class="legal-section-title">Contact</div><div class="legal-body"><p>Questions about this policy can be directed to: <a href="mailto:info.myperfectseason@gmail.com">info.myperfectseason@gmail.com</a></p></div></div>
     </div>
   </div>
 </div>
+
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-nav">
-      <button class="footer-link" onclick="showPage('game')">Play</button>
+      <button class="footer-link" onclick="showPage('intro')">Play</button>
       <span class="footer-divider">|</span>
       <button class="footer-link" onclick="showPage('disclaimer')">Disclaimer</button>
       <span class="footer-divider">|</span>
@@ -243,32 +360,755 @@
     <div class="footer-copy">© 2026 Perfect Season. All rights reserved.</div>
   </div>
 </footer>
+
 <script>
-const POSITIONS=['QB','RB','WR','TE','DL','DB'];
+const POSITIONS=['QB','RB','WR','TE','DB','S'];
 const ERAS=['1970s','1980s','1990s','2000s','2010s'];
 const TEAMS=['49ers','Bears','Bills','Broncos','Browns','Buccaneers','Cardinals','Chargers','Chiefs','Colts','Cowboys','Dolphins','Eagles','Falcons','Giants','Jaguars','Jets','Lions','Packers','Panthers','Patriots','Raiders','Rams','Ravens','Saints','Seahawks','Steelers','Texans','Titans','Vikings','Commanders','Bengals'];
-const STAT_LABELS={QB:['PASS YDS','PASS TD','RUSH YDS','RTG','INT'],RB:['RUSH YDS','RUSH TD','REC YDS','YPC','REC'],WR:['REC','REC YDS','TD','YPR','YAC'],TE:['REC','REC YDS','TD','YPR','YPG'],DL:['SACK','TFL','FF','PD','FRC'],DB:['INT','PD','FF','TKL','RET']};
 const ALL_SCREENS=['intro-screen','game-screen','results-screen','disclaimer-screen','privacy-screen'];
-function showPage(page){ALL_SCREENS.forEach(s=>document.getElementById(s).classList.add('hidden'));if(page==='game'){if(state.round===0&&state.roster.length===0)document.getElementById('intro-screen').classList.remove('hidden');else if(state.round>=6)document.getElementById('results-screen').classList.remove('hidden');else document.getElementById('game-screen').classList.remove('hidden');}else{document.getElementById(page+'-screen').classList.remove('hidden');}window.scrollTo(0,0);}
-function rv(){return 0.85+Math.random()*0.3;}
-function genSeasonStats(p,pos,wins){const s=p.stats,wf=0.7+(wins/17)*0.6;if(pos==='QB')return{'Pass YDS':Math.round(s.PASS_YDS*17/16*rv()),'Pass TD':Math.round(s.PASS_TD*rv()),'Rush YDS':Math.round(s.RUSH_YDS*wf*rv()),'INT':Math.max(0,Math.round(s.INT*(2-wf*0.5))),'Comp %':Math.round(58+(s.RTG-80)*0.3+(wf-1)*5),'QBR':Math.round(s.RTG*rv())};if(pos==='RB')return{'Rush YDS':Math.round(s.RUSH_YDS*wf*rv()),'Rush TD':Math.round(s.RUSH_TD*wf*rv()),'Rec YDS':Math.round(s.REC_YDS*wf*rv()),'YPC':+(s.YPC*rv()).toFixed(1),'Receptions':Math.round(s.REC*wf*rv()),'Scrimmage YDS':Math.round(s.RUSH_YDS*wf*rv()+s.REC_YDS*wf*rv())};if(pos==='WR')return{'Receptions':Math.round(s.REC*wf*rv()),'Rec YDS':Math.round(s.REC_YDS*wf*rv()),'Rec TD':Math.round(s.TD*wf*rv()),'Yds/Rec':+(s.YPR*rv()).toFixed(1),'Targets':Math.round(s.REC*1.55*rv()),'YAC':+(s.YAC*rv()).toFixed(1)};if(pos==='TE')return{'Receptions':Math.round(s.REC*wf*rv()),'Rec YDS':Math.round(s.REC_YDS*wf*rv()),'Rec TD':Math.round(s.TD*wf*rv()),'Yds/Rec':+(s.YPR*rv()).toFixed(1),'Targets':Math.round(s.REC*1.4*rv()),'YPG':+(s.YPG*wf*rv()).toFixed(1)};if(pos==='DL')return{'Sacks':+(s.SACK*wf*rv()).toFixed(1),'TFL':Math.round(s.TFL*wf*rv()),'FF':Math.round(s.FF*rv()),'QB Hits':Math.round(s.SACK*2.8*rv()),'Hurries':Math.round(s.SACK*4.5*rv()),'Def Rtg':Math.round(70+s.SACK*0.8+s.TFL*0.4)};if(pos==='DB')return{'INTs':Math.round(s.INT*wf*rv()),'PD':Math.round(s.PD*rv()),'Tackles':Math.round(s.TKL*wf*rv()),'FF':Math.round(s.FF*rv()),'Cover Rtg':Math.round(70+s.PD*0.6+s.INT*1.2),'TD Allow':Math.max(0,Math.round(12-s.INT*0.8-s.PD*0.2))};return{};}
-const PLAYERS={QB:{'1970s':[{name:'Roger Staubach',team:'Cowboys',stats:{PASS_YDS:2620,PASS_TD:17,RUSH_YDS:343,RTG:84,INT:10},rating:88},{name:'Terry Bradshaw',team:'Steelers',stats:{PASS_YDS:2915,PASS_TD:19,RUSH_YDS:210,RTG:81,INT:12},rating:85},{name:'Fran Tarkenton',team:'Vikings',stats:{PASS_YDS:2961,PASS_TD:25,RUSH_YDS:202,RTG:91,INT:13},rating:84},{name:'Ken Stabler',team:'Raiders',stats:{PASS_YDS:2737,PASS_TD:27,RUSH_YDS:88,RTG:103,INT:17},rating:83},{name:'Bob Griese',team:'Dolphins',stats:{PASS_YDS:2089,PASS_TD:16,RUSH_YDS:116,RTG:83,INT:8},rating:82},{name:'Bart Starr',team:'Packers',stats:{PASS_YDS:1645,PASS_TD:16,RUSH_YDS:92,RTG:104,INT:3},rating:83},{name:'Jim Hart',team:'Cardinals',stats:{PASS_YDS:2507,PASS_TD:18,RUSH_YDS:55,RTG:77,INT:14},rating:72},{name:'Craig Morton',team:'Broncos',stats:{PASS_YDS:1929,PASS_TD:14,RUSH_YDS:48,RTG:74,INT:8},rating:71},{name:'Archie Manning',team:'Saints',stats:{PASS_YDS:2614,PASS_TD:14,RUSH_YDS:312,RTG:69,INT:16},rating:70}],'1980s':[{name:'Joe Montana',team:'49ers',stats:{PASS_YDS:3521,PASS_TD:27,RUSH_YDS:284,RTG:102,INT:8},rating:98},{name:'Dan Marino',team:'Dolphins',stats:{PASS_YDS:4746,PASS_TD:48,RUSH_YDS:44,RTG:108,INT:17},rating:97},{name:'Warren Moon',team:'Titans',stats:{PASS_YDS:4689,PASS_TD:33,RUSH_YDS:168,RTG:96,INT:13},rating:88},{name:'Jim Kelly',team:'Bills',stats:{PASS_YDS:3844,PASS_TD:33,RUSH_YDS:154,RTG:101,INT:17},rating:86},{name:'John Elway',team:'Broncos',stats:{PASS_YDS:3485,PASS_TD:22,RUSH_YDS:467,RTG:79,INT:18},rating:85},{name:'Boomer Esiason',team:'Bengals',stats:{PASS_YDS:3572,PASS_TD:28,RUSH_YDS:248,RTG:97,INT:14},rating:84},{name:'Phil Simms',team:'Giants',stats:{PASS_YDS:3487,PASS_TD:21,RUSH_YDS:98,RTG:90,INT:12},rating:83},{name:'Neil Lomax',team:'Cardinals',stats:{PASS_YDS:4614,PASS_TD:28,RUSH_YDS:62,RTG:93,INT:16},rating:80},{name:'Jim McMahon',team:'Bears',stats:{PASS_YDS:2392,PASS_TD:15,RUSH_YDS:252,RTG:82,INT:11},rating:79}],'1990s':[{name:'Steve Young',team:'49ers',stats:{PASS_YDS:3969,PASS_TD:35,RUSH_YDS:537,RTG:112,INT:10},rating:97},{name:'Brett Favre',team:'Packers',stats:{PASS_YDS:4413,PASS_TD:38,RUSH_YDS:216,RTG:99,INT:13},rating:95},{name:'Troy Aikman',team:'Cowboys',stats:{PASS_YDS:3445,PASS_TD:23,RUSH_YDS:82,RTG:95,INT:7},rating:90},{name:'Peyton Manning',team:'Colts',stats:{PASS_YDS:3739,PASS_TD:26,RUSH_YDS:73,RTG:90,INT:15},rating:88},{name:'Randall Cunningham',team:'Vikings',stats:{PASS_YDS:3704,PASS_TD:34,RUSH_YDS:470,RTG:106,INT:10},rating:87},{name:'Drew Bledsoe',team:'Patriots',stats:{PASS_YDS:4086,PASS_TD:28,RUSH_YDS:51,RTG:83,INT:15},rating:81},{name:'Mark Brunell',team:'Jaguars',stats:{PASS_YDS:3281,PASS_TD:19,RUSH_YDS:424,RTG:84,INT:12},rating:78},{name:'Jim Harbaugh',team:'Colts',stats:{PASS_YDS:2575,PASS_TD:13,RUSH_YDS:279,RTG:84,INT:11},rating:74},{name:'Kerry Collins',team:'Panthers',stats:{PASS_YDS:2717,PASS_TD:14,RUSH_YDS:62,RTG:73,INT:16},rating:69}],'2000s':[{name:'Peyton Manning',team:'Colts',stats:{PASS_YDS:4557,PASS_TD:49,RUSH_YDS:38,RTG:121,INT:10},rating:99},{name:'Tom Brady',team:'Patriots',stats:{PASS_YDS:4806,PASS_TD:50,RUSH_YDS:98,RTG:117,INT:8},rating:99},{name:'Drew Brees',team:'Saints',stats:{PASS_YDS:5069,PASS_TD:34,RUSH_YDS:72,RTG:109,INT:11},rating:94},{name:'Ben Roethlisberger',team:'Steelers',stats:{PASS_YDS:3513,PASS_TD:32,RUSH_YDS:218,RTG:104,INT:9},rating:90},{name:'Donovan McNabb',team:'Eagles',stats:{PASS_YDS:3875,PASS_TD:31,RUSH_YDS:540,RTG:104,INT:8},rating:88},{name:'Matt Hasselbeck',team:'Seahawks',stats:{PASS_YDS:3459,PASS_TD:24,RUSH_YDS:134,RTG:98,INT:9},rating:84},{name:'Carson Palmer',team:'Bengals',stats:{PASS_YDS:3836,PASS_TD:32,RUSH_YDS:56,RTG:101,INT:12},rating:83},{name:'Marc Bulger',team:'Rams',stats:{PASS_YDS:4301,PASS_TD:32,RUSH_YDS:44,RTG:99,INT:10},rating:83},{name:'Chad Pennington',team:'Jets',stats:{PASS_YDS:3098,PASS_TD:22,RUSH_YDS:62,RTG:104,INT:8},rating:80}],'2010s':[{name:'Patrick Mahomes',team:'Chiefs',stats:{PASS_YDS:5097,PASS_TD:50,RUSH_YDS:272,RTG:113,INT:12},rating:99},{name:'Aaron Rodgers',team:'Packers',stats:{PASS_YDS:4381,PASS_TD:45,RUSH_YDS:284,RTG:122,INT:6},rating:98},{name:'Tom Brady',team:'Patriots',stats:{PASS_YDS:4577,PASS_TD:40,RUSH_YDS:38,RTG:110,INT:8},rating:97},{name:'Drew Brees',team:'Saints',stats:{PASS_YDS:5208,PASS_TD:43,RUSH_YDS:44,RTG:116,INT:15},rating:95},{name:'Russell Wilson',team:'Seahawks',stats:{PASS_YDS:3983,PASS_TD:34,RUSH_YDS:586,RTG:110,INT:7},rating:93},{name:'Matt Ryan',team:'Falcons',stats:{PASS_YDS:4944,PASS_TD:38,RUSH_YDS:116,RTG:117,INT:7},rating:91},{name:'Cam Newton',team:'Panthers',stats:{PASS_YDS:3837,PASS_TD:45,RUSH_YDS:636,RTG:99,INT:10},rating:88},{name:'Philip Rivers',team:'Chargers',stats:{PASS_YDS:4515,PASS_TD:37,RUSH_YDS:22,RTG:105,INT:11},rating:87},{name:'Dak Prescott',team:'Cowboys',stats:{PASS_YDS:4902,PASS_TD:30,RUSH_YDS:440,RTG:99,INT:8},rating:86}]},RB:{'1970s':[{name:'Walter Payton',team:'Bears',stats:{RUSH_YDS:1852,RUSH_TD:14,REC_YDS:480,YPC:5.5,REC:49},rating:96},{name:'O.J. Simpson',team:'Bills',stats:{RUSH_YDS:1817,RUSH_TD:16,REC_YDS:198,YPC:6.0,REC:26},rating:95},{name:'Earl Campbell',team:'Titans',stats:{RUSH_YDS:1697,RUSH_TD:19,REC_YDS:98,YPC:4.8,REC:12},rating:88},{name:'Tony Dorsett',team:'Cowboys',stats:{RUSH_YDS:1325,RUSH_TD:7,REC_YDS:267,YPC:4.8,REC:28},rating:86},{name:'Franco Harris',team:'Steelers',stats:{RUSH_YDS:1246,RUSH_TD:11,REC_YDS:214,YPC:4.4,REC:22},rating:85},{name:'Larry Csonka',team:'Dolphins',stats:{RUSH_YDS:1117,RUSH_TD:8,REC_YDS:152,YPC:4.3,REC:20},rating:84},{name:'Chuck Foreman',team:'Vikings',stats:{RUSH_YDS:1155,RUSH_TD:13,REC_YDS:586,YPC:4.3,REC:73},rating:83},{name:'Lydell Mitchell',team:'Colts',stats:{RUSH_YDS:1200,RUSH_TD:9,REC_YDS:544,YPC:4.5,REC:71},rating:80},{name:'John Riggins',team:'Jets',stats:{RUSH_YDS:1005,RUSH_TD:8,REC_YDS:116,YPC:3.9,REC:14},rating:79}],'1980s':[{name:'Eric Dickerson',team:'Rams',stats:{RUSH_YDS:2105,RUSH_TD:14,REC_YDS:148,YPC:5.6,REC:21},rating:97},{name:'Walter Payton',team:'Bears',stats:{RUSH_YDS:1684,RUSH_TD:11,REC_YDS:382,YPC:4.7,REC:49},rating:96},{name:'Marcus Allen',team:'Raiders',stats:{RUSH_YDS:1759,RUSH_TD:11,REC_YDS:448,YPC:5.0,REC:61},rating:91},{name:'Roger Craig',team:'49ers',stats:{RUSH_YDS:1502,RUSH_TD:9,REC_YDS:730,YPC:4.4,REC:92},rating:88},{name:'John Riggins',team:'Commanders',stats:{RUSH_YDS:1347,RUSH_TD:24,REC_YDS:144,YPC:3.8,REC:20},rating:86},{name:'Bo Jackson',team:'Raiders',stats:{RUSH_YDS:950,RUSH_TD:6,REC_YDS:62,YPC:6.8,REC:9},rating:87},{name:'Gerald Riggs',team:'Falcons',stats:{RUSH_YDS:1719,RUSH_TD:10,REC_YDS:106,YPC:4.3,REC:14},rating:83},{name:'Herschel Walker',team:'Cowboys',stats:{RUSH_YDS:1514,RUSH_TD:5,REC_YDS:450,YPC:4.2,REC:60},rating:82},{name:'Christian Okoye',team:'Chiefs',stats:{RUSH_YDS:1480,RUSH_TD:12,REC_YDS:104,YPC:4.5,REC:16},rating:81}],'1990s':[{name:'Barry Sanders',team:'Lions',stats:{RUSH_YDS:2053,RUSH_TD:11,REC_YDS:289,YPC:6.1,REC:33},rating:99},{name:'Emmitt Smith',team:'Cowboys',stats:{RUSH_YDS:1773,RUSH_TD:25,REC_YDS:458,YPC:4.7,REC:62},rating:96},{name:'Terrell Davis',team:'Broncos',stats:{RUSH_YDS:2008,RUSH_TD:21,REC_YDS:216,YPC:4.7,REC:25},rating:94},{name:'Marshall Faulk',team:'Colts',stats:{RUSH_YDS:1319,RUSH_TD:11,REC_YDS:690,YPC:4.8,REC:86},rating:93},{name:'Curtis Martin',team:'Jets',stats:{RUSH_YDS:1732,RUSH_TD:14,REC_YDS:408,YPC:4.5,REC:50},rating:88},{name:'Jerome Bettis',team:'Steelers',stats:{RUSH_YDS:1431,RUSH_TD:13,REC_YDS:214,YPC:3.8,REC:30},rating:85},{name:'Eddie George',team:'Titans',stats:{RUSH_YDS:1294,RUSH_TD:14,REC_YDS:280,YPC:4.0,REC:37},rating:83},{name:'Ricky Watters',team:'Eagles',stats:{RUSH_YDS:1411,RUSH_TD:11,REC_YDS:502,YPC:4.1,REC:66},rating:82},{name:'Garrison Hearst',team:'49ers',stats:{RUSH_YDS:1570,RUSH_TD:7,REC_YDS:302,YPC:5.1,REC:39},rating:84}],'2000s':[{name:'LaDainian Tomlinson',team:'Chargers',stats:{RUSH_YDS:1815,RUSH_TD:28,REC_YDS:508,YPC:5.2,REC:56},rating:99},{name:'Marshall Faulk',team:'Rams',stats:{RUSH_YDS:1382,RUSH_TD:10,REC_YDS:588,YPC:5.4,REC:83},rating:96},{name:'Priest Holmes',team:'Chiefs',stats:{RUSH_YDS:1615,RUSH_TD:27,REC_YDS:690,YPC:5.1,REC:74},rating:94},{name:'Shaun Alexander',team:'Seahawks',stats:{RUSH_YDS:1880,RUSH_TD:27,REC_YDS:194,YPC:4.5,REC:25},rating:93},{name:'Jamal Lewis',team:'Ravens',stats:{RUSH_YDS:2066,RUSH_TD:14,REC_YDS:205,YPC:5.3,REC:26},rating:91},{name:'Adrian Peterson',team:'Vikings',stats:{RUSH_YDS:1341,RUSH_TD:12,REC_YDS:142,YPC:5.6,REC:19},rating:90},{name:'Edgerrin James',team:'Colts',stats:{RUSH_YDS:1553,RUSH_TD:13,REC_YDS:416,YPC:4.5,REC:51},rating:89},{name:'Clinton Portis',team:'Broncos',stats:{RUSH_YDS:1508,RUSH_TD:15,REC_YDS:298,YPC:5.5,REC:38},rating:88},{name:'Warrick Dunn',team:'Buccaneers',stats:{RUSH_YDS:1226,RUSH_TD:8,REC_YDS:438,YPC:4.7,REC:58},rating:82}],'2010s':[{name:'Adrian Peterson',team:'Vikings',stats:{RUSH_YDS:2097,RUSH_TD:13,REC_YDS:217,YPC:6.0,REC:40},rating:98},{name:'Derrick Henry',team:'Titans',stats:{RUSH_YDS:2027,RUSH_TD:17,REC_YDS:114,YPC:5.4,REC:18},rating:94},{name:'Christian McCaffrey',team:'Panthers',stats:{RUSH_YDS:1387,RUSH_TD:8,REC_YDS:867,YPC:4.6,REC:116},rating:93},{name:'Marshawn Lynch',team:'Seahawks',stats:{RUSH_YDS:1590,RUSH_TD:17,REC_YDS:268,YPC:4.9,REC:37},rating:93},{name:"Le'Veon Bell",team:'Steelers',stats:{RUSH_YDS:1268,RUSH_TD:9,REC_YDS:655,YPC:4.9,REC:85},rating:92},{name:'Todd Gurley',team:'Rams',stats:{RUSH_YDS:1512,RUSH_TD:19,REC_YDS:497,YPC:4.9,REC:64},rating:91},{name:'Ezekiel Elliott',team:'Cowboys',stats:{RUSH_YDS:1631,RUSH_TD:15,REC_YDS:349,YPC:4.9,REC:62},rating:91},{name:'Saquon Barkley',team:'Giants',stats:{RUSH_YDS:1307,RUSH_TD:11,REC_YDS:721,YPC:5.0,REC:91},rating:89},{name:'Matt Forte',team:'Bears',stats:{RUSH_YDS:1339,RUSH_TD:9,REC_YDS:808,YPC:4.7,REC:102},rating:87}]},WR:{'1970s':[{name:'Drew Pearson',team:'Cowboys',stats:{REC:58,REC_YDS:1087,TD:6,YPR:18.8,YAC:3.8},rating:85},{name:'Cliff Branch',team:'Raiders',stats:{REC:46,REC_YDS:1111,TD:12,YPR:24.2,YAC:3.5},rating:85},{name:'Lynn Swann',team:'Steelers',stats:{REC:49,REC_YDS:880,TD:11,YPR:18.0,YAC:4.2},rating:84},{name:'John Stallworth',team:'Steelers',stats:{REC:70,REC_YDS:1395,TD:11,YPR:19.9,YAC:3.9},rating:84},{name:'Harold Carmichael',team:'Eagles',stats:{REC:67,REC_YDS:1072,TD:11,YPR:16.0,YAC:4.0},rating:83},{name:'Paul Warfield',team:'Dolphins',stats:{REC:29,REC_YDS:536,TD:8,YPR:18.5,YAC:3.2},rating:83},{name:'Ahmad Rashad',team:'Vikings',stats:{REC:80,REC_YDS:1095,TD:9,YPR:13.7,YAC:4.1},rating:80},{name:'Bob Hayes',team:'Cowboys',stats:{REC:34,REC_YDS:649,TD:7,YPR:19.1,YAC:3.5},rating:79},{name:'Charley Taylor',team:'Commanders',stats:{REC:59,REC_YDS:793,TD:7,YPR:13.4,YAC:3.8},rating:78}],'1980s':[{name:'Jerry Rice',team:'49ers',stats:{REC:86,REC_YDS:1570,TD:15,YPR:18.2,YAC:5.1},rating:99},{name:'Michael Irvin',team:'Cowboys',stats:{REC:93,REC_YDS:1523,TD:8,YPR:16.4,YAC:4.1},rating:90},{name:'Art Monk',team:'Commanders',stats:{REC:106,REC_YDS:1372,TD:7,YPR:12.9,YAC:4.2},rating:89},{name:'Steve Largent',team:'Seahawks',stats:{REC:79,REC_YDS:1287,TD:9,YPR:16.3,YAC:4.0},rating:88},{name:'James Lofton',team:'Packers',stats:{REC:71,REC_YDS:1361,TD:8,YPR:19.2,YAC:3.7},rating:87},{name:'Mark Duper',team:'Dolphins',stats:{REC:71,REC_YDS:1313,TD:8,YPR:18.5,YAC:3.9},rating:84},{name:'Wes Chandler',team:'Chargers',stats:{REC:69,REC_YDS:1299,TD:9,YPR:18.8,YAC:3.5},rating:83},{name:'Charlie Joiner',team:'Chargers',stats:{REC:65,REC_YDS:1132,TD:7,YPR:17.4,YAC:3.6},rating:82},{name:'Al Toon',team:'Jets',stats:{REC:93,REC_YDS:1067,TD:5,YPR:11.5,YAC:5.2},rating:80}],'1990s':[{name:'Jerry Rice',team:'49ers',stats:{REC:122,REC_YDS:1848,TD:17,YPR:15.2,YAC:5.3},rating:99},{name:'Cris Carter',team:'Vikings',stats:{REC:122,REC_YDS:1371,TD:17,YPR:11.2,YAC:5.5},rating:93},{name:'Michael Irvin',team:'Cowboys',stats:{REC:111,REC_YDS:1603,TD:10,YPR:14.4,YAC:4.3},rating:92},{name:'Herman Moore',team:'Lions',stats:{REC:123,REC_YDS:1686,TD:14,YPR:13.7,YAC:4.5},rating:88},{name:'Tim Brown',team:'Raiders',stats:{REC:104,REC_YDS:1408,TD:9,YPR:13.5,YAC:4.1},rating:88},{name:'Andre Reed',team:'Bills',stats:{REC:90,REC_YDS:1312,TD:8,YPR:14.6,YAC:4.8},rating:87},{name:'Carl Pickens',team:'Bengals',stats:{REC:100,REC_YDS:1234,TD:17,YPR:12.3,YAC:4.0},rating:85},{name:'Keyshawn Johnson',team:'Jets',stats:{REC:89,REC_YDS:1131,TD:8,YPR:12.7,YAC:5.0},rating:82},{name:'Keenan McCardell',team:'Jaguars',stats:{REC:85,REC_YDS:1164,TD:6,YPR:13.7,YAC:4.2},rating:80}],'2000s':[{name:'Randy Moss',team:'Patriots',stats:{REC:98,REC_YDS:1493,TD:23,YPR:15.2,YAC:3.9},rating:98},{name:'Marvin Harrison',team:'Colts',stats:{REC:143,REC_YDS:1722,TD:15,YPR:12.0,YAC:4.0},rating:97},{name:'Torry Holt',team:'Rams',stats:{REC:117,REC_YDS:1696,TD:12,YPR:14.5,YAC:4.2},rating:92},{name:'Terrell Owens',team:'Eagles',stats:{REC:77,REC_YDS:1200,TD:14,YPR:15.6,YAC:3.7},rating:91},{name:'Chad Johnson',team:'Bengals',stats:{REC:97,REC_YDS:1440,TD:9,YPR:14.8,YAC:3.8},rating:89},{name:'Steve Smith',team:'Panthers',stats:{REC:103,REC_YDS:1563,TD:12,YPR:15.2,YAC:4.5},rating:88},{name:'Reggie Wayne',team:'Colts',stats:{REC:95,REC_YDS:1310,TD:10,YPR:13.8,YAC:4.1},rating:87},{name:'Anquan Boldin',team:'Cardinals',stats:{REC:102,REC_YDS:1402,TD:10,YPR:13.7,YAC:5.0},rating:86},{name:'Hines Ward',team:'Steelers',stats:{REC:112,REC_YDS:1329,TD:11,YPR:11.9,YAC:5.3},rating:85}],'2010s':[{name:'Antonio Brown',team:'Steelers',stats:{REC:136,REC_YDS:1834,TD:12,YPR:13.5,YAC:5.1},rating:97},{name:'Calvin Johnson',team:'Lions',stats:{REC:122,REC_YDS:1964,TD:5,YPR:16.1,YAC:4.2},rating:97},{name:'Julio Jones',team:'Falcons',stats:{REC:113,REC_YDS:1871,TD:8,YPR:16.6,YAC:4.5},rating:95},{name:'Davante Adams',team:'Packers',stats:{REC:115,REC_YDS:1374,TD:14,YPR:11.9,YAC:5.2},rating:93},{name:'DeAndre Hopkins',team:'Texans',stats:{REC:115,REC_YDS:1572,TD:11,YPR:13.7,YAC:4.8},rating:93},{name:'Tyreek Hill',team:'Chiefs',stats:{REC:87,REC_YDS:1416,TD:12,YPR:16.3,YAC:6.1},rating:93},{name:'Odell Beckham Jr.',team:'Giants',stats:{REC:91,REC_YDS:1305,TD:12,YPR:14.3,YAC:5.5},rating:91},{name:'A.J. Green',team:'Bengals',stats:{REC:97,REC_YDS:1426,TD:11,YPR:14.7,YAC:4.3},rating:90},{name:'Stefon Diggs',team:'Vikings',stats:{REC:94,REC_YDS:1130,TD:6,YPR:12.0,YAC:5.0},rating:87}]},TE:{'1970s':[{name:'Dave Casper',team:'Raiders',stats:{REC:53,REC_YDS:796,TD:10,YPR:15.0,YPG:56.9},rating:88},{name:'Russ Francis',team:'Patriots',stats:{REC:39,REC_YDS:670,TD:5,YPR:17.2,YPG:47.9},rating:83},{name:'Charlie Sanders',team:'Lions',stats:{REC:42,REC_YDS:590,TD:4,YPR:14.0,YPG:42.1},rating:82},{name:'Ted Kwalick',team:'49ers',stats:{REC:52,REC_YDS:795,TD:6,YPR:15.3,YPG:56.8},rating:78},{name:'Bob Tucker',team:'Giants',stats:{REC:59,REC_YDS:791,TD:4,YPR:13.4,YPG:56.5},rating:79},{name:'Ozzie Newsome',team:'Browns',stats:{REC:38,REC_YDS:589,TD:2,YPR:15.5,YPG:42.1},rating:80},{name:'Riley Odoms',team:'Broncos',stats:{REC:42,REC_YDS:566,TD:4,YPR:13.5,YPG:40.4},rating:76},{name:'Jean Fugett',team:'Cowboys',stats:{REC:33,REC_YDS:466,TD:4,YPR:14.1,YPG:33.3},rating:74},{name:'Jim Mitchell',team:'Falcons',stats:{REC:40,REC_YDS:487,TD:3,YPR:12.2,YPG:34.8},rating:72}],'1980s':[{name:'Kellen Winslow',team:'Chargers',stats:{REC:89,REC_YDS:1290,TD:10,YPR:14.5,YPG:92.1},rating:97},{name:'Todd Christensen',team:'Raiders',stats:{REC:95,REC_YDS:1153,TD:12,YPR:12.1,YPG:82.4},rating:89},{name:'Ozzie Newsome',team:'Browns',stats:{REC:89,REC_YDS:1002,TD:5,YPR:11.3,YPG:71.6},rating:88},{name:'Jimmie Giles',team:'Buccaneers',stats:{REC:54,REC_YDS:786,TD:9,YPR:14.6,YPG:56.1},rating:80},{name:'Russ Francis',team:'49ers',stats:{REC:44,REC_YDS:735,TD:5,YPR:16.7,YPG:52.5},rating:83},{name:'Steve Jordan',team:'Vikings',stats:{REC:68,REC_YDS:859,TD:5,YPR:12.6,YPG:61.4},rating:80},{name:'Mickey Shuler',team:'Jets',stats:{REC:70,REC_YDS:879,TD:6,YPR:12.6,YPG:62.8},rating:78},{name:'Pete Holohan',team:'Chargers',stats:{REC:46,REC_YDS:613,TD:3,YPR:13.3,YPG:43.8},rating:73},{name:'Don Warren',team:'Commanders',stats:{REC:39,REC_YDS:461,TD:4,YPR:11.8,YPG:32.9},rating:74}],'1990s':[{name:'Shannon Sharpe',team:'Broncos',stats:{REC:96,REC_YDS:1107,TD:10,YPR:11.5,YPG:79.1},rating:95},{name:'Ben Coates',team:'Patriots',stats:{REC:96,REC_YDS:1174,TD:8,YPR:12.2,YPG:83.9},rating:89},{name:'Keith Jackson',team:'Eagles',stats:{REC:81,REC_YDS:869,TD:9,YPR:10.7,YPG:62.1},rating:85},{name:'Tony Gonzalez',team:'Chiefs',stats:{REC:76,REC_YDS:849,TD:6,YPR:11.2,YPG:60.6},rating:88},{name:'Jay Novacek',team:'Cowboys',stats:{REC:68,REC_YDS:699,TD:5,YPR:10.3,YPG:49.9},rating:84},{name:'Wesley Walls',team:'Panthers',stats:{REC:58,REC_YDS:713,TD:10,YPR:12.3,YPG:50.9},rating:82},{name:'Eric Green',team:'Steelers',stats:{REC:63,REC_YDS:942,TD:7,YPR:14.9,YPG:67.3},rating:80},{name:'Johnny Mitchell',team:'Jets',stats:{REC:39,REC_YDS:630,TD:4,YPR:16.2,YPG:45.0},rating:73},{name:'Ferrell Edmunds',team:'Dolphins',stats:{REC:48,REC_YDS:609,TD:5,YPR:12.7,YPG:43.5},rating:74}],'2000s':[{name:'Tony Gonzalez',team:'Chiefs',stats:{REC:102,REC_YDS:1258,TD:10,YPR:12.3,YPG:89.9},rating:98},{name:'Antonio Gates',team:'Chargers',stats:{REC:89,REC_YDS:1101,TD:13,YPR:12.4,YPG:78.6},rating:96},{name:'Jason Witten',team:'Cowboys',stats:{REC:96,REC_YDS:1145,TD:7,YPR:11.9,YPG:81.8},rating:91},{name:'Alge Crumpler',team:'Falcons',stats:{REC:73,REC_YDS:877,TD:8,YPR:12.0,YPG:62.6},rating:84},{name:'Jeremy Shockey',team:'Giants',stats:{REC:74,REC_YDS:891,TD:7,YPR:12.0,YPG:63.6},rating:83},{name:'Dallas Clark',team:'Colts',stats:{REC:77,REC_YDS:838,TD:6,YPR:10.9,YPG:59.9},rating:82},{name:'Chris Cooley',team:'Commanders',stats:{REC:66,REC_YDS:774,TD:7,YPR:11.7,YPG:55.3},rating:80},{name:'Brent Celek',team:'Eagles',stats:{REC:76,REC_YDS:971,TD:8,YPR:12.8,YPG:69.4},rating:78},{name:'Randy McMichael',team:'Dolphins',stats:{REC:73,REC_YDS:791,TD:5,YPR:10.8,YPG:56.5},rating:76}],'2010s':[{name:'Rob Gronkowski',team:'Patriots',stats:{REC:90,REC_YDS:1327,TD:17,YPR:14.7,YPG:94.8},rating:99},{name:'Travis Kelce',team:'Chiefs',stats:{REC:103,REC_YDS:1336,TD:10,YPR:13.0,YPG:95.4},rating:98},{name:'Jimmy Graham',team:'Saints',stats:{REC:99,REC_YDS:1310,TD:16,YPR:13.2,YPG:93.6},rating:93},{name:'Greg Olsen',team:'Panthers',stats:{REC:77,REC_YDS:1073,TD:7,YPR:13.9,YPG:76.6},rating:87},{name:'Zach Ertz',team:'Eagles',stats:{REC:116,REC_YDS:1163,TD:8,YPR:10.0,YPG:83.1},rating:87},{name:'Tyler Eifert',team:'Bengals',stats:{REC:52,REC_YDS:615,TD:13,YPR:11.8,YPG:43.9},rating:82},{name:'Kyle Rudolph',team:'Vikings',stats:{REC:83,REC_YDS:840,TD:12,YPR:10.1,YPG:60.0},rating:82},{name:'Eric Ebron',team:'Colts',stats:{REC:66,REC_YDS:750,TD:14,YPR:11.4,YPG:53.6},rating:80},{name:'Delanie Walker',team:'Titans',stats:{REC:74,REC_YDS:800,TD:7,YPR:10.8,YPG:57.1},rating:80}]},DL:{'1970s':[{name:'Mean Joe Greene',team:'Steelers',stats:{SACK:10.0,TFL:18,FF:3,PD:2,FRC:8},rating:97},{name:'Alan Page',team:'Vikings',stats:{SACK:9.0,TFL:16,FF:2,PD:3,FRC:7},rating:90},{name:'Harvey Martin',team:'Cowboys',stats:{SACK:23.0,TFL:22,FF:4,PD:3,FRC:9},rating:90},{name:'Jack Youngblood',team:'Rams',stats:{SACK:11.0,TFL:19,FF:3,PD:2,FRC:8},rating:89},{name:'Merlin Olsen',team:'Rams',stats:{SACK:8.0,TFL:15,FF:2,PD:1,FRC:7},rating:88},{name:'Carl Eller',team:'Vikings',stats:{SACK:12.0,TFL:17,FF:3,PD:2,FRC:8},rating:88},{name:'Claude Humphrey',team:'Falcons',stats:{SACK:12.0,TFL:18,FF:3,PD:2,FRC:7},rating:85},{name:'Lyle Alzado',team:'Broncos',stats:{SACK:10.0,TFL:16,FF:3,PD:1,FRC:7},rating:84},{name:'Coy Bacon',team:'Bengals',stats:{SACK:14.0,TFL:17,FF:2,PD:2,FRC:7},rating:82}],'1980s':[{name:'Lawrence Taylor',team:'Giants',stats:{SACK:20.5,TFL:25,FF:5,PD:4,FRC:11},rating:99},{name:'Reggie White',team:'Eagles',stats:{SACK:21.0,TFL:24,FF:4,PD:3,FRC:10},rating:98},{name:'Bruce Smith',team:'Bills',stats:{SACK:19.0,TFL:22,FF:5,PD:3,FRC:9},rating:94},{name:'Richard Dent',team:'Bears',stats:{SACK:17.0,TFL:20,FF:4,PD:2,FRC:8},rating:90},{name:'Howie Long',team:'Raiders',stats:{SACK:13.0,TFL:19,FF:3,PD:2,FRC:9},rating:88},{name:'Randy White',team:'Cowboys',stats:{SACK:9.0,TFL:17,FF:3,PD:2,FRC:8},rating:88},{name:'Mark Gastineau',team:'Jets',stats:{SACK:22.0,TFL:21,FF:4,PD:2,FRC:8},rating:87},{name:'Lee Roy Selmon',team:'Buccaneers',stats:{SACK:11.0,TFL:18,FF:3,PD:2,FRC:8},rating:87},{name:'Dexter Manley',team:'Commanders',stats:{SACK:14.5,TFL:19,FF:4,PD:2,FRC:8},rating:84}],'1990s':[{name:'Reggie White',team:'Packers',stats:{SACK:16.0,TFL:20,FF:4,PD:3,FRC:9},rating:98},{name:'Derrick Thomas',team:'Chiefs',stats:{SACK:20.0,TFL:22,FF:5,PD:3,FRC:10},rating:96},{name:'Bruce Smith',team:'Bills',stats:{SACK:19.5,TFL:23,FF:5,PD:2,FRC:10},rating:95},{name:'John Randle',team:'Vikings',stats:{SACK:15.5,TFL:21,FF:3,PD:4,FRC:9},rating:91},{name:'Kevin Greene',team:'Panthers',stats:{SACK:14.5,TFL:18,FF:5,PD:2,FRC:8},rating:90},{name:"Leslie O'Neal",team:'Chargers',stats:{SACK:17.5,TFL:20,FF:4,PD:2,FRC:9},rating:88},{name:'Michael Strahan',team:'Giants',stats:{SACK:14.5,TFL:19,FF:3,PD:2,FRC:8},rating:88},{name:'Neil Smith',team:'Chiefs',stats:{SACK:15.0,TFL:19,FF:4,PD:2,FRC:9},rating:87},{name:'Sean Jones',team:'Packers',stats:{SACK:13.5,TFL:17,FF:3,PD:2,FRC:8},rating:83}],'2000s':[{name:'Michael Strahan',team:'Giants',stats:{SACK:22.5,TFL:28,FF:5,PD:3,FRC:10},rating:97},{name:'Dwight Freeney',team:'Colts',stats:{SACK:16.0,TFL:20,FF:6,PD:2,FRC:9},rating:93},{name:'Jared Allen',team:'Vikings',stats:{SACK:16.0,TFL:20,FF:4,PD:2,FRC:9},rating:90},{name:'Simeon Rice',team:'Buccaneers',stats:{SACK:15.5,TFL:19,FF:4,PD:3,FRC:8},rating:89},{name:'Terrell Suggs',team:'Ravens',stats:{SACK:14.0,TFL:18,FF:5,PD:2,FRC:8},rating:87},{name:'Robert Mathis',team:'Colts',stats:{SACK:13.5,TFL:17,FF:6,PD:2,FRC:8},rating:86},{name:'Osi Umenyiora',team:'Giants',stats:{SACK:13.0,TFL:17,FF:4,PD:2,FRC:8},rating:85},{name:'Patrick Kerney',team:'Seahawks',stats:{SACK:14.5,TFL:18,FF:3,PD:2,FRC:8},rating:85},{name:'Justin Tuck',team:'Giants',stats:{SACK:11.0,TFL:16,FF:3,PD:2,FRC:7},rating:87}],'2010s':[{name:'J.J. Watt',team:'Texans',stats:{SACK:20.5,TFL:29,FF:4,PD:16,FRC:12},rating:99},{name:'Aaron Donald',team:'Rams',stats:{SACK:20.5,TFL:26,FF:5,PD:7,FRC:11},rating:99},{name:'Von Miller',team:'Broncos',stats:{SACK:18.5,TFL:22,FF:6,PD:3,FRC:10},rating:95},{name:'Khalil Mack',team:'Raiders',stats:{SACK:15.0,TFL:21,FF:5,PD:4,FRC:9},rating:92},{name:'Myles Garrett',team:'Browns',stats:{SACK:16.0,TFL:20,FF:4,PD:3,FRC:9},rating:90},{name:'Cameron Jordan',team:'Saints',stats:{SACK:15.6,TFL:20,FF:4,PD:5,FRC:9},rating:88},{name:'Danielle Hunter',team:'Vikings',stats:{SACK:14.5,TFL:18,FF:3,PD:3,FRC:8},rating:86},{name:'Dee Ford',team:'Chiefs',stats:{SACK:13.0,TFL:16,FF:5,PD:2,FRC:7},rating:82},{name:'Frank Clark',team:'Chiefs',stats:{SACK:13.0,TFL:16,FF:3,PD:2,FRC:8},rating:83}]},DB:{'1970s':[{name:'Mel Blount',team:'Steelers',stats:{INT:11,PD:24,FF:2,TKL:62,RET:0},rating:94},{name:'Cliff Harris',team:'Cowboys',stats:{INT:9,PD:21,FF:3,TKL:74,RET:1},rating:87},{name:'Jack Tatum',team:'Raiders',stats:{INT:7,PD:20,FF:3,TKL:70,RET:0},rating:87},{name:'Dick Anderson',team:'Dolphins',stats:{INT:8,PD:18,FF:1,TKL:55,RET:1},rating:86},{name:'Roger Wehrli',team:'Cardinals',stats:{INT:7,PD:22,FF:1,TKL:50,RET:2},rating:85},{name:'Willie Brown',team:'Raiders',stats:{INT:6,PD:19,FF:1,TKL:48,RET:1},rating:84},{name:'Lem Barney',team:'Lions',stats:{INT:7,PD:17,FF:1,TKL:44,RET:3},rating:83},{name:'Louis Wright',team:'Broncos',stats:{INT:6,PD:18,FF:2,TKL:55,RET:1},rating:80},{name:'Pat Fischer',team:'Commanders',stats:{INT:5,PD:16,FF:1,TKL:52,RET:1},rating:78}],'1980s':[{name:'Ronnie Lott',team:'49ers',stats:{INT:10,PD:30,FF:4,TKL:85,RET:1},rating:99},{name:'Kenny Easley',team:'Seahawks',stats:{INT:10,PD:26,FF:3,TKL:80,RET:0},rating:92},{name:'Mike Haynes',team:'Raiders',stats:{INT:8,PD:27,FF:2,TKL:60,RET:3},rating:90},{name:'Darrell Green',team:'Commanders',stats:{INT:6,PD:24,FF:2,TKL:58,RET:2},rating:88},{name:'Everson Walls',team:'Cowboys',stats:{INT:11,PD:22,FF:1,TKL:52,RET:0},rating:87},{name:'Eric Allen',team:'Eagles',stats:{INT:8,PD:24,FF:2,TKL:56,RET:3},rating:86},{name:'Hanford Dixon',team:'Browns',stats:{INT:9,PD:22,FF:2,TKL:60,RET:1},rating:84},{name:'Deron Cherry',team:'Chiefs',stats:{INT:9,PD:20,FF:1,TKL:58,RET:0},rating:83},{name:'Dave Brown',team:'Steelers',stats:{INT:5,PD:19,FF:2,TKL:62,RET:0},rating:81}],'1990s':[{name:'Deion Sanders',team:'49ers',stats:{INT:7,PD:37,FF:2,TKL:38,RET:3},rating:98},{name:'Rod Woodson',team:'Steelers',stats:{INT:8,PD:31,FF:3,TKL:72,RET:2},rating:97},{name:'Aeneas Williams',team:'Cardinals',stats:{INT:9,PD:33,FF:3,TKL:58,RET:2},rating:91},{name:'Darrell Green',team:'Commanders',stats:{INT:6,PD:28,FF:2,TKL:62,RET:3},rating:90},{name:'Ty Law',team:'Patriots',stats:{INT:8,PD:28,FF:2,TKL:54,RET:2},rating:87},{name:'Carnell Lake',team:'Steelers',stats:{INT:7,PD:22,FF:3,TKL:78,RET:0},rating:85},{name:'Terry McDaniel',team:'Raiders',stats:{INT:8,PD:26,FF:2,TKL:50,RET:2},rating:83},{name:'Ray Buchanan',team:'Falcons',stats:{INT:8,PD:24,FF:2,TKL:55,RET:1},rating:82},{name:'Ashley Ambrose',team:'Bengals',stats:{INT:6,PD:20,FF:2,TKL:52,RET:0},rating:77}],'2000s':[{name:'Ed Reed',team:'Ravens',stats:{INT:9,PD:28,FF:3,TKL:60,RET:2},rating:98},{name:'Troy Polamalu',team:'Steelers',stats:{INT:7,PD:24,FF:4,TKL:90,RET:1},rating:97},{name:'Champ Bailey',team:'Broncos',stats:{INT:10,PD:35,FF:2,TKL:65,RET:1},rating:95},{name:'Charles Woodson',team:'Raiders',stats:{INT:8,PD:30,FF:3,TKL:70,RET:2},rating:93},{name:'Brian Dawkins',team:'Eagles',stats:{INT:6,PD:22,FF:3,TKL:82,RET:1},rating:91},{name:'Ronde Barber',team:'Buccaneers',stats:{INT:10,PD:29,FF:2,TKL:65,RET:2},rating:88},{name:'Nnamdi Asomugha',team:'Raiders',stats:{INT:6,PD:31,FF:1,TKL:42,RET:0},rating:88},{name:'Antoine Winfield',team:'Vikings',stats:{INT:7,PD:21,FF:3,TKL:90,RET:0},rating:86},{name:'Marcus Peters',team:'Chiefs',stats:{INT:8,PD:26,FF:2,TKL:50,RET:2},rating:84}],'2010s':[{name:'Richard Sherman',team:'Seahawks',stats:{INT:8,PD:36,FF:2,TKL:58,RET:1},rating:96},{name:'Darrelle Revis',team:'Jets',stats:{INT:6,PD:32,FF:1,TKL:48,RET:0},rating:95},{name:'Patrick Peterson',team:'Cardinals',stats:{INT:8,PD:32,FF:2,TKL:50,RET:3},rating:94},{name:'Earl Thomas',team:'Seahawks',stats:{INT:7,PD:26,FF:3,TKL:80,RET:0},rating:93},{name:'Stephon Gilmore',team:'Patriots',stats:{INT:6,PD:20,FF:2,TKL:52,RET:0},rating:90},{name:'Tyrann Mathieu',team:'Cardinals',stats:{INT:6,PD:24,FF:4,TKL:75,RET:2},rating:89},{name:'Harrison Smith',team:'Vikings',stats:{INT:6,PD:19,FF:3,TKL:88,RET:0},rating:88},{name:'Aqib Talib',team:'Broncos',stats:{INT:8,PD:26,FF:2,TKL:48,RET:1},rating:87},{name:'Marcus Peters',team:'Rams',stats:{INT:8,PD:29,FF:2,TKL:44,RET:3},rating:86}]}};
-let state={round:0,roster:[],teamSkips:1,eraSkips:1,currentEra:null,currentTeam:null,spun:false,totalRating:0,usedEras:[],currentPool:[],currentPage:0};
 const PAGE_SIZE=6;
-function startGame(){document.getElementById('intro-screen').classList.add('hidden');document.getElementById('game-screen').classList.remove('hidden');resetRound();}
-function resetGame(){state={round:0,roster:[],teamSkips:1,eraSkips:1,currentEra:null,currentTeam:null,spun:false,totalRating:0,usedEras:[],currentPool:[],currentPage:0};ALL_SCREENS.forEach(s=>document.getElementById(s).classList.add('hidden'));document.getElementById('intro-screen').classList.remove('hidden');document.getElementById('simulate-btn').disabled=true;document.getElementById('current-record').textContent='0-0';document.getElementById('strength-fill').style.width='0%';for(let i=0;i<6;i++){const s=document.getElementById('rslot-'+i);s.className='roster-slot';s.innerHTML=`<div class="roster-slot-pos">${POSITIONS[i]}</div><div class="roster-slot-name" style="color:#2a3548">—</div>`;}}
-function resetRound(){const pos=POSITIONS[state.round];document.getElementById('round-num').textContent=state.round+1;document.getElementById('position-badge').textContent=`ROUND ${state.round+1} · ${pos}`;document.getElementById('slot-era').textContent='—';document.getElementById('slot-team').textContent='—';document.getElementById('spin-btn').disabled=false;document.getElementById('slot-section').classList.remove('hidden');document.getElementById('pick-section').classList.add('hidden');state.spun=false;updateSkipBtns();updatePips();}
-function updateSkipBtns(){document.getElementById('skip-era-btn').disabled=!state.spun||state.eraSkips===0;document.getElementById('skip-team-btn').disabled=!state.spun||state.teamSkips===0;document.getElementById('era-skips-left').textContent=state.eraSkips;document.getElementById('team-skips-left').textContent=state.teamSkips;}
-function updatePips(){document.querySelectorAll('.pip').forEach((p,i)=>{p.className='pip';if(i<state.round)p.classList.add('filled');else if(i===state.round)p.classList.add('current');});}
-function getAvailableEra(){const a=ERAS.filter(e=>!state.usedEras.includes(e));return a.length>0?a[Math.floor(Math.random()*a.length)]:ERAS[Math.floor(Math.random()*ERAS.length)];}
-function spinSlot(){document.getElementById('spin-btn').disabled=true;const eEl=document.getElementById('slot-era'),tEl=document.getElementById('slot-team');let c=0;const iv=setInterval(()=>{eEl.textContent=ERAS[Math.floor(Math.random()*ERAS.length)];tEl.textContent=TEAMS[Math.floor(Math.random()*TEAMS.length)];if(++c>=14){clearInterval(iv);state.currentEra=getAvailableEra();state.currentTeam=TEAMS[Math.floor(Math.random()*TEAMS.length)];eEl.textContent=state.currentEra;tEl.textContent=state.currentTeam;state.spun=true;updateSkipBtns();setTimeout(showPlayers,300);}},75);}
-function skipTeam(){if(!state.spun||state.teamSkips<=0)return;state.teamSkips--;state.currentTeam=TEAMS[Math.floor(Math.random()*TEAMS.length)];document.getElementById('slot-team').textContent=state.currentTeam;updateSkipBtns();showPlayers();}
-function skipEra(){if(!state.spun||state.eraSkips<=0)return;state.eraSkips--;const a=ERAS.filter(e=>!state.usedEras.includes(e)&&e!==state.currentEra);state.currentEra=a.length>0?a[Math.floor(Math.random()*a.length)]:ERAS[Math.floor(Math.random()*ERAS.length)];document.getElementById('slot-era').textContent=state.currentEra;updateSkipBtns();showPlayers();}
-function showPlayers(){state.currentPool=[...(PLAYERS[POSITIONS[state.round]][state.currentEra]||[])].sort((a,b)=>b.rating-a.rating);state.currentPage=0;document.getElementById('slot-section').classList.add('hidden');document.getElementById('pick-section').classList.remove('hidden');renderPage();}
-function renderPage(){const pos=POSITIONS[state.round],labels=STAT_LABELS[pos],pool=state.currentPool,total=Math.ceil(pool.length/PAGE_SIZE),start=state.currentPage*PAGE_SIZE,page=pool.slice(start,start+PAGE_SIZE);document.getElementById('pick-header').textContent=`Select your ${pos} — ${state.currentEra} (${pool.length} available)`;document.getElementById('page-indicator').textContent=`Page ${state.currentPage+1} of ${total}`;document.getElementById('prev-btn').disabled=state.currentPage===0;document.getElementById('next-btn').disabled=state.currentPage>=total-1;document.getElementById('pagination').style.display=total<=1?'none':'flex';document.getElementById('player-grid').innerHTML=page.map((p,i)=>`<div class="player-card" onclick="selectPlayer(${start+i})"><div class="player-name">${p.name}</div><div class="player-meta">${p.team} <span class="era-badge">${state.currentEra}</span></div><div class="player-stats">${Object.keys(p.stats).map((k,j)=>`<div class="stat-box"><div class="stat-val">${p.stats[k]}</div><div class="stat-lbl">${labels[j]||k}</div></div>`).join('')}</div><button class="select-btn">Draft Player</button></div>`).join('');}
-function changePage(dir){const t=Math.ceil(state.currentPool.length/PAGE_SIZE);state.currentPage=Math.max(0,Math.min(t-1,state.currentPage+dir));renderPage();}
-function selectPlayer(idx){const p=state.currentPool[idx];if(!p)return;state.roster.push({...p,era:state.currentEra});state.usedEras.push(state.currentEra);state.totalRating+=p.rating;state.round++;const sl=document.getElementById('rslot-'+(state.round-1));sl.classList.add('filled');sl.innerHTML=`<div class="roster-slot-pos">${POSITIONS[state.round-1]}</div><div class="roster-slot-name">${p.name}</div><div class="roster-slot-era">${state.currentEra}</div>`;document.getElementById('strength-fill').style.width=Math.min((state.totalRating/(6*99))*100,100)+'%';if(state.round>=6){document.getElementById('pick-section').classList.add('hidden');document.getElementById('slot-section').classList.add('hidden');document.getElementById('simulate-btn').disabled=false;}else resetRound();}
-function runSimulation(){ALL_SCREENS.forEach(s=>document.getElementById(s).classList.add('hidden'));document.getElementById('results-screen').classList.remove('hidden');const avg=state.totalRating/6,wins=Math.max(0,Math.min(17,Math.round(Math.pow(Math.max((avg-70)/29,0),1.4)*17))),losses=17-wins;document.getElementById('final-record').textContent=`${wins}-${losses}`;document.getElementById('final-record').style.color=wins===17?'#5ab85a':wins>=14?'#c8a84b':'#e05050';document.getElementById('results-headline').textContent=wins===17?"Perfection. Your team just made NFL history.":wins>=16?"One blemish on an otherwise legendary season.":wins>=15?"Elite — but perfection just barely escaped you.":wins>=14?"A dominant squad that fell just short.":wins>=12?"Playoff-bound, but your roster has real holes.":wins>=9?"Below expectations for this caliber of player.":"Back to the drawing board.";document.getElementById('result-cards').innerHTML=[{l:'Avg Rating',v:Math.round(state.totalRating/6)},{l:'Roster Score',v:state.totalRating},{l:'Win %',v:Math.round((wins/17)*100)+'%'},{l:'Season W',v:wins},{l:'Season L',v:losses}].map(c=>`<div class="result-card"><div class="result-card-val">${c.v}</div><div class="result-card-lbl">${c.l}</div></div>`).join('');document.getElementById('stats-grid').innerHTML=state.roster.map((p,i)=>{const pos=POSITIONS[i],ss=genSeasonStats(p,pos,wins),keys=Object.keys(ss);return`<div class="pos-stat-card"><div class="pos-stat-header"><div class="pos-stat-name">${p.name}</div><div class="pos-stat-pos">${pos}</div></div><div class="pos-stat-rows">${keys.map(k=>`<div class="pos-stat-box"><div class="pos-stat-val">${ss[k]}</div><div class="pos-stat-lbl">${k}</div></div>`).join('')}</div></div>`;}).join('');const opps=['Chiefs','Eagles','Ravens','49ers','Cowboys','Bills','Lions','Bengals','Packers','Chargers','Jets','Browns','Steelers','Rams','Saints','Seahawks','Vikings'];document.getElementById('game-log-entries').innerHTML=Array.from({length:17},(_,i)=>{const win=i<wins,margin=win?Math.floor(Math.random()*21)+3:Math.floor(Math.random()*14)+1,my=win?21+Math.floor(Math.random()*17):14+Math.floor(Math.random()*10),opp=win?my-margin:my+margin;return`<div class="game-log-item ${win?'win':'loss'}"><span>Wk ${i+1} vs ${opps[i%opps.length]}</span><span>${win?'W':'L'} ${my}-${opp}</span></div>`;}).join('');window.scrollTo(0,0);}
+
+// Stat labels for selection cards
+const STAT_LABELS={
+  QB:['PASS YDS','PASS TD','RUSH YDS','RTG','INT'],
+  RB:['RUSH YDS','RUSH TD','REC YDS','REC TD','YPC'],
+  WR:['REC','REC YDS','TD','YPR','YAC'],
+  TE:['REC','REC YDS','TD','YPR','YPG'],
+  DB:['INT','PD','FF','TKL','RET'],
+  S:['INT','TKL','FF','PD','BLTZ'],
+};
+
+// Sort key map — which stat key to sort by for each position's stat buttons
+const SORT_KEYS={
+  QB:[{key:'PASS_YDS',label:'PASS YDS'},{key:'PASS_TD',label:'PASS TD'}],
+  RB:[{key:'RUSH_YDS',label:'RUSH YDS'},{key:'RUSH_TD',label:'RUSH TD'}],
+  WR:[{key:'REC_YDS',label:'REC YDS'},{key:'REC',label:'REC'}],
+  TE:[{key:'REC_YDS',label:'REC YDS'},{key:'TD',label:'TD'}],
+  DB:[{key:'INT',label:'INT'},{key:'PD',label:'PD'}],
+  S:[{key:'INT',label:'INT'},{key:'TKL',label:'TKL'}],
+};
+
+let gameMode='classic';
+let state={round:0,roster:[],teamSkips:1,eraSkips:1,currentEra:null,currentTeam:null,spun:false,totalRating:0,usedEras:[],currentPool:[],currentPage:0,sortKey:'rating',eraQueue:[]};
+
+// Build a shuffled era queue ensuring even distribution
+function buildEraQueue(){
+  const q=[...ERAS];
+  for(let i=q.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[q[i],q[j]]=[q[j],q[i]];}
+  return q;
+}
+
+function selectMode(m){
+  gameMode=m;
+  document.getElementById('mode-classic').classList.toggle('selected',m==='classic');
+  document.getElementById('mode-filmroom').classList.toggle('selected',m==='filmroom');
+}
+
+function showPage(page){
+  ALL_SCREENS.forEach(s=>document.getElementById(s).classList.add('hidden'));
+  if(page==='intro'||page==='game'){
+    if(state.round===0&&state.roster.length===0){document.getElementById('intro-screen').classList.remove('hidden');}
+    else if(state.round>=6){document.getElementById('results-screen').classList.remove('hidden');}
+    else{document.getElementById('game-screen').classList.remove('hidden');}
+  } else {
+    document.getElementById(page+'-screen').classList.remove('hidden');
+  }
+  window.scrollTo(0,0);
+}
+
+function startGame(){
+  state.eraQueue=buildEraQueue();
+  document.getElementById('intro-screen').classList.add('hidden');
+  document.getElementById('game-screen').classList.remove('hidden');
+  const badge=document.getElementById('mode-badge');
+  if(gameMode==='filmroom'){badge.textContent='Film Room';badge.className='mode-badge filmroom';}
+  else{badge.textContent='Classic';badge.className='mode-badge classic';}
+  resetRound();
+}
+
+function resetGame(){
+  state={round:0,roster:[],teamSkips:1,eraSkips:1,currentEra:null,currentTeam:null,spun:false,totalRating:0,usedEras:[],currentPool:[],currentPage:0,sortKey:'rating',eraQueue:[]};
+  ALL_SCREENS.forEach(s=>document.getElementById(s).classList.add('hidden'));
+  document.getElementById('intro-screen').classList.remove('hidden');
+  document.getElementById('simulate-btn').disabled=true;
+  document.getElementById('current-record').textContent='0-0';
+  document.getElementById('strength-fill').style.width='0%';
+  for(let i=0;i<6;i++){const s=document.getElementById('rslot-'+i);s.className='roster-slot';s.innerHTML=`<div class="roster-slot-pos">${POSITIONS[i]}</div><div class="roster-slot-name" style="color:#2a3548">—</div>`;}
+}
+
+function resetRound(){
+  const pos=POSITIONS[state.round];
+  state.sortKey='rating';
+  document.getElementById('round-num').textContent=state.round+1;
+  document.getElementById('position-badge').textContent=`ROUND ${state.round+1} · ${pos}`;
+  document.getElementById('slot-era').textContent='—';
+  document.getElementById('slot-team').textContent='—';
+  document.getElementById('spin-btn').disabled=false;
+  document.getElementById('slot-section').classList.remove('hidden');
+  document.getElementById('pick-section').classList.add('hidden');
+  state.spun=false;
+  updateSkipBtns();
+  updatePips();
+  updateSortBtns();
+}
+
+function updateSkipBtns(){
+  document.getElementById('skip-era-btn').disabled=!state.spun||state.eraSkips===0;
+  document.getElementById('skip-team-btn').disabled=!state.spun||state.teamSkips===0;
+  document.getElementById('era-skips-left').textContent=state.eraSkips;
+  document.getElementById('team-skips-left').textContent=state.teamSkips;
+}
+
+function updatePips(){
+  document.querySelectorAll('.pip').forEach((p,i)=>{p.className='pip';if(i<state.round)p.classList.add('filled');else if(i===state.round)p.classList.add('current');});
+}
+
+function updateSortBtns(){
+  const pos=POSITIONS[state.round]||'QB';
+  const keys=SORT_KEYS[pos]||[];
+  const s1=document.getElementById('sort-stat1');
+  const s2=document.getElementById('sort-stat2');
+  s1.textContent=keys[0]?keys[0].label:'—';
+  s2.textContent=keys[1]?keys[1].label:'—';
+  s1.dataset.key=keys[0]?keys[0].key:'';
+  s2.dataset.key=keys[1]?keys[1].key:'';
+  ['sort-rating','sort-stat1','sort-stat2','sort-name'].forEach(id=>{
+    document.getElementById(id).classList.toggle('active',
+      (id==='sort-rating'&&state.sortKey==='rating')||
+      (id==='sort-stat1'&&state.sortKey===s1.dataset.key)||
+      (id==='sort-stat2'&&state.sortKey===s2.dataset.key)||
+      (id==='sort-name'&&state.sortKey==='name')
+    );
+  });
+}
+
+function sortPlayers(type){
+  const pos=POSITIONS[state.round];
+  const keys=SORT_KEYS[pos]||[];
+  if(type==='rating') state.sortKey='rating';
+  else if(type==='stat1') state.sortKey=keys[0]?keys[0].key:'rating';
+  else if(type==='stat2') state.sortKey=keys[1]?keys[1].key:'rating';
+  else if(type==='name') state.sortKey='name';
+  applySort();
+  state.currentPage=0;
+  updateSortBtns();
+  renderPage();
+}
+
+function applySort(){
+  if(state.sortKey==='rating') state.currentPool.sort((a,b)=>b.rating-a.rating);
+  else if(state.sortKey==='name') state.currentPool.sort((a,b)=>a.name.localeCompare(b.name));
+  else {
+    state.currentPool.sort((a,b)=>{
+      const av=parseFloat(a.stats[state.sortKey])||0;
+      const bv=parseFloat(b.stats[state.sortKey])||0;
+      return bv-av;
+    });
+  }
+}
+
+// Era queue: pop next era from shuffled queue (guarantees each era used once per game)
+function getNextEra(){
+  if(state.eraQueue.length===0) state.eraQueue=buildEraQueue();
+  // Filter out already used eras
+  const available=state.eraQueue.filter(e=>!state.usedEras.includes(e));
+  if(available.length===0) return ERAS[Math.floor(Math.random()*ERAS.length)];
+  // Pick random from available (still random, just guaranteed distribution)
+  return available[Math.floor(Math.random()*available.length)];
+}
+
+function spinSlot(){
+  document.getElementById('spin-btn').disabled=true;
+  const eEl=document.getElementById('slot-era'),tEl=document.getElementById('slot-team');
+  let c=0;
+  const iv=setInterval(()=>{
+    eEl.textContent=ERAS[Math.floor(Math.random()*ERAS.length)];
+    tEl.textContent=TEAMS[Math.floor(Math.random()*TEAMS.length)];
+    if(++c>=14){
+      clearInterval(iv);
+      state.currentEra=getNextEra();
+      state.currentTeam=TEAMS[Math.floor(Math.random()*TEAMS.length)];
+      eEl.textContent=state.currentEra;
+      tEl.textContent=state.currentTeam;
+      state.spun=true;
+      updateSkipBtns();
+      setTimeout(showPlayers,300);
+    }
+  },75);
+}
+
+function skipTeam(){
+  if(!state.spun||state.teamSkips<=0)return;
+  state.teamSkips--;
+  state.currentTeam=TEAMS[Math.floor(Math.random()*TEAMS.length)];
+  document.getElementById('slot-team').textContent=state.currentTeam;
+  updateSkipBtns();
+  showPlayers();
+}
+
+function skipEra(){
+  if(!state.spun||state.eraSkips<=0)return;
+  state.eraSkips--;
+  const available=ERAS.filter(e=>!state.usedEras.includes(e)&&e!==state.currentEra);
+  state.currentEra=available.length>0?available[Math.floor(Math.random()*available.length)]:ERAS[Math.floor(Math.random()*ERAS.length)];
+  document.getElementById('slot-era').textContent=state.currentEra;
+  updateSkipBtns();
+  showPlayers();
+}
+
+function showPlayers(){
+  const pos=POSITIONS[state.round];
+  state.currentPool=[...(PLAYERS[pos][state.currentEra]||[])];
+  state.sortKey='rating';
+  applySort();
+  state.currentPage=0;
+  document.getElementById('slot-section').classList.add('hidden');
+  document.getElementById('pick-section').classList.remove('hidden');
+  updateSortBtns();
+  renderPage();
+}
+
+function renderPage(){
+  const pos=POSITIONS[state.round];
+  const labels=STAT_LABELS[pos];
+  const pool=state.currentPool;
+  const total=Math.ceil(pool.length/PAGE_SIZE);
+  const start=state.currentPage*PAGE_SIZE;
+  const page=pool.slice(start,start+PAGE_SIZE);
+  document.getElementById('pick-header').textContent=`Select your ${pos} — ${state.currentEra} (${pool.length} available)`;
+  document.getElementById('page-indicator').textContent=`Page ${state.currentPage+1} of ${total}`;
+  document.getElementById('prev-btn').disabled=state.currentPage===0;
+  document.getElementById('next-btn').disabled=state.currentPage>=total-1;
+  document.getElementById('pagination').style.display=total<=1?'none':'flex';
+  const isFilmRoom=gameMode==='filmroom';
+  document.getElementById('player-grid').innerHTML=page.map((p,i)=>{
+    const keys=Object.keys(p.stats);
+    const ratingPct=((p.rating-60)/39)*100;
+    const statsHtml=isFilmRoom
+      ? keys.map((_,j)=>`<div class="stat-box"><div class="stat-hidden">—</div><div class="stat-lbl">${labels[j]||''}</div></div>`).join('')
+      : keys.map((k,j)=>`<div class="stat-box"><div class="stat-val">${p.stats[k]}</div><div class="stat-lbl">${labels[j]||k}</div></div>`).join('');
+    return `<div class="player-card" onclick="selectPlayer(${start+i})">
+      <div class="peak-tag">Peak Season</div>
+      <div class="player-name">${p.name}</div>
+      <div class="player-meta">${p.team} <span class="era-badge">${state.currentEra}</span></div>
+      <div class="player-stats">${statsHtml}</div>
+      <div class="rating-bar"><div class="rating-fill" style="width:${isFilmRoom?0:ratingPct}%"></div></div>
+      <button class="select-btn">Draft Player</button>
+    </div>`;
+  }).join('');
+}
+
+function changePage(dir){
+  const t=Math.ceil(state.currentPool.length/PAGE_SIZE);
+  state.currentPage=Math.max(0,Math.min(t-1,state.currentPage+dir));
+  renderPage();
+}
+
+function selectPlayer(idx){
+  const p=state.currentPool[idx];
+  if(!p)return;
+  state.roster.push({...p,era:state.currentEra});
+  state.usedEras.push(state.currentEra);
+  state.totalRating+=p.rating;
+  state.round++;
+  const sl=document.getElementById('rslot-'+(state.round-1));
+  sl.classList.add('filled');
+  sl.innerHTML=`<div class="roster-slot-pos">${POSITIONS[state.round-1]}</div><div class="roster-slot-name">${p.name}</div><div class="roster-slot-era">${state.currentEra}</div>`;
+  document.getElementById('strength-fill').style.width=Math.min((state.totalRating/(6*99))*100,100)+'%';
+  if(state.round>=6){document.getElementById('pick-section').classList.add('hidden');document.getElementById('slot-section').classList.add('hidden');document.getElementById('simulate-btn').disabled=false;}
+  else resetRound();
+}
+
+function rv(){return 0.85+Math.random()*0.3;}
+
+function genSeasonStats(p,pos,wins){
+  const s=p.stats,wf=0.7+(wins/17)*0.6;
+  if(pos==='QB')return{'Pass YDS':Math.round(s.PASS_YDS*17/16*rv()),'Pass TD':Math.round(s.PASS_TD*rv()),'Rush YDS':Math.round(s.RUSH_YDS*wf*rv()),'INT':Math.max(0,Math.round(s.INT*(2-wf*0.5))),'Comp %':Math.round(58+(s.RTG-80)*0.3+(wf-1)*5),'QBR':Math.round(s.RTG*rv())};
+  if(pos==='RB')return{'Rush YDS':Math.round(s.RUSH_YDS*wf*rv()),'Rush TD':Math.round(s.RUSH_TD*wf*rv()),'Rec YDS':Math.round(s.REC_YDS*wf*rv()),'Rec TD':Math.round(s.REC_TD*wf*rv()),'YPC':+(s.YPC*rv()).toFixed(1),'Scrimmage YDS':Math.round(s.RUSH_YDS*wf*rv()+s.REC_YDS*wf*rv())};
+  if(pos==='WR')return{'Receptions':Math.round(s.REC*wf*rv()),'Rec YDS':Math.round(s.REC_YDS*wf*rv()),'Rec TD':Math.round(s.TD*wf*rv()),'Yds/Rec':+(s.YPR*rv()).toFixed(1),'Targets':Math.round(s.REC*1.55*rv()),'YAC':+(s.YAC*rv()).toFixed(1)};
+  if(pos==='TE')return{'Receptions':Math.round(s.REC*wf*rv()),'Rec YDS':Math.round(s.REC_YDS*wf*rv()),'Rec TD':Math.round(s.TD*wf*rv()),'Yds/Rec':+(s.YPR*rv()).toFixed(1),'Targets':Math.round(s.REC*1.4*rv()),'YPG':+(s.YPG*wf*rv()).toFixed(1)};
+  if(pos==='DB')return{'INTs':Math.round(s.INT*wf*rv()),'PD':Math.round(s.PD*rv()),'Tackles':Math.round(s.TKL*wf*rv()),'FF':Math.round(s.FF*rv()),'Cover Rtg':Math.round(70+s.PD*0.6+s.INT*1.2),'TD Allow':Math.max(0,Math.round(12-s.INT*0.8-s.PD*0.2))};
+  if(pos==='S')return{'INTs':Math.round(s.INT*wf*rv()),'Tackles':Math.round(s.TKL*wf*rv()),'FF':Math.round(s.FF*rv()),'PD':Math.round(s.PD*rv()),'Blitzes':Math.round(s.BLTZ*wf*rv()),'Def Rtg':Math.round(70+s.INT*1.5+s.TKL*0.2)};
+  return{};
+}
+
+function runSimulation(){
+  ALL_SCREENS.forEach(s=>document.getElementById(s).classList.add('hidden'));
+  document.getElementById('results-screen').classList.remove('hidden');
+  const avg=state.totalRating/6;
+  const wins=Math.max(0,Math.min(17,Math.round(Math.pow(Math.max((avg-70)/29,0),1.4)*17)));
+  const losses=17-wins;
+  document.getElementById('final-record').textContent=`${wins}-${losses}`;
+  document.getElementById('final-record').style.color=wins===17?'#5ab85a':wins>=14?'#c8a84b':'#e05050';
+  const hl=wins===17?"Perfection. Your team just made NFL history.":wins>=16?"One blemish on an otherwise legendary season.":wins>=15?"Elite — but perfection just barely escaped you.":wins>=14?"A dominant squad that fell just short.":wins>=12?"Playoff-bound, but your roster has real holes.":wins>=9?"Below expectations for this caliber of player.":"Back to the drawing board.";
+  document.getElementById('results-headline').textContent=hl;
+  document.getElementById('result-cards').innerHTML=[{l:'Avg Rating',v:Math.round(state.totalRating/6)},{l:'Roster Score',v:state.totalRating},{l:'Win %',v:Math.round((wins/17)*100)+'%'},{l:'Season W',v:wins},{l:'Season L',v:losses}].map(c=>`<div class="result-card"><div class="result-card-val">${c.v}</div><div class="result-card-lbl">${c.l}</div></div>`).join('');
+  document.getElementById('stats-grid').innerHTML=state.roster.map((p,i)=>{const pos=POSITIONS[i],ss=genSeasonStats(p,pos,wins),keys=Object.keys(ss);return`<div class="pos-stat-card"><div class="pos-stat-header"><div class="pos-stat-name">${p.name}</div><div class="pos-stat-pos">${pos}</div></div><div class="pos-stat-rows">${keys.map(k=>`<div class="pos-stat-box"><div class="pos-stat-val">${ss[k]}</div><div class="pos-stat-lbl">${k}</div></div>`).join('')}</div></div>`;}).join('');
+  const opps=['Chiefs','Eagles','Ravens','49ers','Cowboys','Bills','Lions','Bengals','Packers','Chargers','Jets','Browns','Steelers','Rams','Saints','Seahawks','Vikings'];
+  document.getElementById('game-log-entries').innerHTML=Array.from({length:17},(_,i)=>{const win=i<wins,margin=win?Math.floor(Math.random()*21)+3:Math.floor(Math.random()*14)+1,my=win?21+Math.floor(Math.random()*17):14+Math.floor(Math.random()*10),opp=win?my-margin:my+margin;return`<div class="game-log-item ${win?'win':'loss'}"><span>Wk ${i+1} vs ${opps[i%opps.length]}</span><span>${win?'W':'L'} ${my}-${opp}</span></div>`;}).join('');
+
+  // Build share card
+  const posEmoji={QB:'🏈',RB:'💨',WR:'⚡',TE:'🎯',DB:'🛡️',S:'🔒'};
+  const rosterLines=state.roster.map((p,i)=>`${posEmoji[POSITIONS[i]]} ${POSITIONS[i]}: ${p.name} (${p.era})`).join('\n');
+  const shareText=`Perfect Season: ${wins}-${losses}\n${rosterLines}\n\nCan you beat me? → myperfectseason.com`;
+  document.getElementById('share-card').textContent=shareText;
+  window.currentShareText=shareText;
+  window.scrollTo(0,0);
+}
+
+function copyShare(){
+  if(!window.currentShareText)return;
+  navigator.clipboard.writeText(window.currentShareText).then(()=>{
+    const btn=document.getElementById('share-btn');
+    btn.textContent='Copied!';
+    btn.className='share-btn copied';
+    setTimeout(()=>{btn.textContent='Copy & Share';btn.className='share-btn';},2500);
+  }).catch(()=>{
+    const ta=document.createElement('textarea');
+    ta.value=window.currentShareText;
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    const btn=document.getElementById('share-btn');btn.textContent='Copied!';btn.className='share-btn copied';
+    setTimeout(()=>{btn.textContent='Copy & Share';btn.className='share-btn';},2500);
+  });
+}
+
+// ============================================================
+// PLAYER DATABASE
+// ============================================================
+const PLAYERS={
+  QB:{
+    '1970s':[
+      {name:'Roger Staubach',team:'Cowboys',stats:{PASS_YDS:2620,PASS_TD:17,RUSH_YDS:343,RTG:84,INT:10},rating:88},
+      {name:'Terry Bradshaw',team:'Steelers',stats:{PASS_YDS:2915,PASS_TD:19,RUSH_YDS:210,RTG:81,INT:12},rating:85},
+      {name:'Fran Tarkenton',team:'Vikings',stats:{PASS_YDS:2961,PASS_TD:25,RUSH_YDS:202,RTG:91,INT:13},rating:84},
+      {name:'Ken Stabler',team:'Raiders',stats:{PASS_YDS:2737,PASS_TD:27,RUSH_YDS:88,RTG:103,INT:17},rating:83},
+      {name:'Bob Griese',team:'Dolphins',stats:{PASS_YDS:2089,PASS_TD:16,RUSH_YDS:116,RTG:83,INT:8},rating:82},
+      {name:'Bart Starr',team:'Packers',stats:{PASS_YDS:1645,PASS_TD:16,RUSH_YDS:92,RTG:104,INT:3},rating:83},
+      {name:'Jim Hart',team:'Cardinals',stats:{PASS_YDS:2507,PASS_TD:18,RUSH_YDS:55,RTG:77,INT:14},rating:72},
+      {name:'Craig Morton',team:'Broncos',stats:{PASS_YDS:1929,PASS_TD:14,RUSH_YDS:48,RTG:74,INT:8},rating:71},
+      {name:'Archie Manning',team:'Saints',stats:{PASS_YDS:2614,PASS_TD:14,RUSH_YDS:312,RTG:69,INT:16},rating:70},
+      {name:'Billy Kilmer',team:'Commanders',stats:{PASS_YDS:2440,PASS_TD:19,RUSH_YDS:84,RTG:83,INT:14},rating:74},
+      {name:'Bob Lee',team:'Vikings',stats:{PASS_YDS:1880,PASS_TD:12,RUSH_YDS:62,RTG:72,INT:10},rating:68},
+      {name:'Jim Zorn',team:'Seahawks',stats:{PASS_YDS:2571,PASS_TD:20,RUSH_YDS:380,RTG:77,INT:18},rating:72},
+    ],
+    '1980s':[
+      {name:'Joe Montana',team:'49ers',stats:{PASS_YDS:3521,PASS_TD:27,RUSH_YDS:284,RTG:102,INT:8},rating:98},
+      {name:'Dan Marino',team:'Dolphins',stats:{PASS_YDS:4746,PASS_TD:48,RUSH_YDS:44,RTG:108,INT:17},rating:97},
+      {name:'Warren Moon',team:'Titans',stats:{PASS_YDS:4689,PASS_TD:33,RUSH_YDS:168,RTG:96,INT:13},rating:88},
+      {name:'Jim Kelly',team:'Bills',stats:{PASS_YDS:3844,PASS_TD:33,RUSH_YDS:154,RTG:101,INT:17},rating:86},
+      {name:'John Elway',team:'Broncos',stats:{PASS_YDS:3485,PASS_TD:22,RUSH_YDS:467,RTG:79,INT:18},rating:85},
+      {name:'Boomer Esiason',team:'Bengals',stats:{PASS_YDS:3572,PASS_TD:28,RUSH_YDS:248,RTG:97,INT:14},rating:84},
+      {name:'Phil Simms',team:'Giants',stats:{PASS_YDS:3487,PASS_TD:21,RUSH_YDS:98,RTG:90,INT:12},rating:83},
+      {name:'Neil Lomax',team:'Cardinals',stats:{PASS_YDS:4614,PASS_TD:28,RUSH_YDS:62,RTG:93,INT:16},rating:80},
+      {name:'Jim McMahon',team:'Bears',stats:{PASS_YDS:2392,PASS_TD:15,RUSH_YDS:252,RTG:82,INT:11},rating:79},
+      {name:'Dave Krieg',team:'Seahawks',stats:{PASS_YDS:3671,PASS_TD:32,RUSH_YDS:116,RTG:94,INT:20},rating:78},
+      {name:'Ken O\'Brien',team:'Jets',stats:{PASS_YDS:3888,PASS_TD:25,RUSH_YDS:34,RTG:96,INT:8},rating:79},
+      {name:'Tony Eason',team:'Patriots',stats:{PASS_YDS:2156,PASS_TD:11,RUSH_YDS:42,RTG:79,INT:10},rating:72},
+    ],
+    '1990s':[
+      {name:'Steve Young',team:'49ers',stats:{PASS_YDS:3969,PASS_TD:35,RUSH_YDS:537,RTG:112,INT:10},rating:97},
+      {name:'Brett Favre',team:'Packers',stats:{PASS_YDS:4413,PASS_TD:38,RUSH_YDS:216,RTG:99,INT:13},rating:95},
+      {name:'Troy Aikman',team:'Cowboys',stats:{PASS_YDS:3445,PASS_TD:23,RUSH_YDS:82,RTG:95,INT:7},rating:90},
+      {name:'Peyton Manning',team:'Colts',stats:{PASS_YDS:3739,PASS_TD:26,RUSH_YDS:73,RTG:90,INT:15},rating:88},
+      {name:'Randall Cunningham',team:'Vikings',stats:{PASS_YDS:3704,PASS_TD:34,RUSH_YDS:470,RTG:106,INT:10},rating:87},
+      {name:'Drew Bledsoe',team:'Patriots',stats:{PASS_YDS:4086,PASS_TD:28,RUSH_YDS:51,RTG:83,INT:15},rating:81},
+      {name:'Mark Brunell',team:'Jaguars',stats:{PASS_YDS:3281,PASS_TD:19,RUSH_YDS:424,RTG:84,INT:12},rating:78},
+      {name:'Jim Harbaugh',team:'Colts',stats:{PASS_YDS:2575,PASS_TD:13,RUSH_YDS:279,RTG:84,INT:11},rating:74},
+      {name:'Kerry Collins',team:'Panthers',stats:{PASS_YDS:2717,PASS_TD:14,RUSH_YDS:62,RTG:73,INT:16},rating:69},
+      {name:'Warren Moon',team:'Vikings',stats:{PASS_YDS:4264,PASS_TD:33,RUSH_YDS:88,RTG:91,INT:14},rating:85},
+      {name:'Vinny Testaverde',team:'Jets',stats:{PASS_YDS:3256,PASS_TD:29,RUSH_YDS:44,RTG:101,INT:7},rating:78},
+      {name:'Neil O\'Donnell',team:'Steelers',stats:{PASS_YDS:2970,PASS_TD:17,RUSH_YDS:62,RTG:85,INT:7},rating:75},
+    ],
+    '2000s':[
+      {name:'Peyton Manning',team:'Colts',stats:{PASS_YDS:4557,PASS_TD:49,RUSH_YDS:38,RTG:121,INT:10},rating:99},
+      {name:'Tom Brady',team:'Patriots',stats:{PASS_YDS:4806,PASS_TD:50,RUSH_YDS:98,RTG:117,INT:8},rating:99},
+      {name:'Drew Brees',team:'Saints',stats:{PASS_YDS:5069,PASS_TD:34,RUSH_YDS:72,RTG:109,INT:11},rating:94},
+      {name:'Ben Roethlisberger',team:'Steelers',stats:{PASS_YDS:3513,PASS_TD:32,RUSH_YDS:218,RTG:104,INT:9},rating:90},
+      {name:'Donovan McNabb',team:'Eagles',stats:{PASS_YDS:3875,PASS_TD:31,RUSH_YDS:540,RTG:104,INT:8},rating:88},
+      {name:'Matt Hasselbeck',team:'Seahawks',stats:{PASS_YDS:3459,PASS_TD:24,RUSH_YDS:134,RTG:98,INT:9},rating:84},
+      {name:'Carson Palmer',team:'Bengals',stats:{PASS_YDS:3836,PASS_TD:32,RUSH_YDS:56,RTG:101,INT:12},rating:83},
+      {name:'Marc Bulger',team:'Rams',stats:{PASS_YDS:4301,PASS_TD:32,RUSH_YDS:44,RTG:99,INT:10},rating:83},
+      {name:'Chad Pennington',team:'Jets',stats:{PASS_YDS:3098,PASS_TD:22,RUSH_YDS:62,RTG:104,INT:8},rating:80},
+      {name:'Tony Romo',team:'Cowboys',stats:{PASS_YDS:4483,PASS_TD:36,RUSH_YDS:211,RTG:97,INT:19},rating:84},
+      {name:'Philip Rivers',team:'Chargers',stats:{PASS_YDS:4009,PASS_TD:34,RUSH_YDS:22,RTG:105,INT:11},rating:86},
+      {name:'Eli Manning',team:'Giants',stats:{PASS_YDS:4021,PASS_TD:31,RUSH_YDS:44,RTG:93,INT:14},rating:80},
+    ],
+    '2010s':[
+      {name:'Patrick Mahomes',team:'Chiefs',stats:{PASS_YDS:5097,PASS_TD:50,RUSH_YDS:272,RTG:113,INT:12},rating:99},
+      {name:'Aaron Rodgers',team:'Packers',stats:{PASS_YDS:4381,PASS_TD:45,RUSH_YDS:284,RTG:122,INT:6},rating:98},
+      {name:'Tom Brady',team:'Patriots',stats:{PASS_YDS:4577,PASS_TD:40,RUSH_YDS:38,RTG:110,INT:8},rating:97},
+      {name:'Drew Brees',team:'Saints',stats:{PASS_YDS:5208,PASS_TD:43,RUSH_YDS:44,RTG:116,INT:15},rating:95},
+      {name:'Russell Wilson',team:'Seahawks',stats:{PASS_YDS:3983,PASS_TD:34,RUSH_YDS:586,RTG:110,INT:7},rating:93},
+      {name:'Matt Ryan',team:'Falcons',stats:{PASS_YDS:4944,PASS_TD:38,RUSH_YDS:116,RTG:117,INT:7},rating:91},
+      {name:'Cam Newton',team:'Panthers',stats:{PASS_YDS:3837,PASS_TD:45,RUSH_YDS:636,RTG:99,INT:10},rating:88},
+      {name:'Philip Rivers',team:'Chargers',stats:{PASS_YDS:4515,PASS_TD:37,RUSH_YDS:22,RTG:105,INT:11},rating:87},
+      {name:'Dak Prescott',team:'Cowboys',stats:{PASS_YDS:4902,PASS_TD:30,RUSH_YDS:440,RTG:99,INT:8},rating:86},
+      {name:'Kirk Cousins',team:'Commanders',stats:{PASS_YDS:4917,PASS_TD:29,RUSH_YDS:66,RTG:93,INT:10},rating:82},
+      {name:'Lamar Jackson',team:'Ravens',stats:{PASS_YDS:2889,PASS_TD:36,RUSH_YDS:1206,RTG:113,INT:6},rating:94},
+      {name:'Jimmy Garoppolo',team:'49ers',stats:{PASS_YDS:3372,PASS_TD:27,RUSH_YDS:92,RTG:102,INT:13},rating:80},
+    ],
+  },
+  RB:{
+    '1970s':[
+      {name:'Walter Payton',team:'Bears',stats:{RUSH_YDS:1852,RUSH_TD:14,REC_YDS:480,REC_TD:3,YPC:5.5},rating:96},
+      {name:'O.J. Simpson',team:'Bills',stats:{RUSH_YDS:1817,RUSH_TD:16,REC_YDS:198,REC_TD:1,YPC:6.0},rating:95},
+      {name:'Earl Campbell',team:'Titans',stats:{RUSH_YDS:1697,RUSH_TD:19,REC_YDS:98,REC_TD:0,YPC:4.8},rating:88},
+      {name:'Tony Dorsett',team:'Cowboys',stats:{RUSH_YDS:1325,RUSH_TD:7,REC_YDS:267,REC_TD:2,YPC:4.8},rating:86},
+      {name:'Franco Harris',team:'Steelers',stats:{RUSH_YDS:1246,RUSH_TD:11,REC_YDS:214,REC_TD:1,YPC:4.4},rating:85},
+      {name:'Larry Csonka',team:'Dolphins',stats:{RUSH_YDS:1117,RUSH_TD:8,REC_YDS:152,REC_TD:1,YPC:4.3},rating:84},
+      {name:'Chuck Foreman',team:'Vikings',stats:{RUSH_YDS:1155,RUSH_TD:13,REC_YDS:586,REC_TD:5,YPC:4.3},rating:83},
+      {name:'Lydell Mitchell',team:'Colts',stats:{RUSH_YDS:1200,RUSH_TD:9,REC_YDS:544,REC_TD:4,YPC:4.5},rating:80},
+      {name:'John Riggins',team:'Jets',stats:{RUSH_YDS:1005,RUSH_TD:8,REC_YDS:116,REC_TD:0,YPC:3.9},rating:79},
+      {name:'Lawrence McCutcheon',team:'Rams',stats:{RUSH_YDS:1109,RUSH_TD:3,REC_YDS:336,REC_TD:2,YPC:4.4},rating:78},
+      {name:'Rocky Bleier',team:'Steelers',stats:{RUSH_YDS:1036,RUSH_TD:5,REC_YDS:312,REC_TD:2,YPC:4.1},rating:76},
+      {name:'Mike Thomas',team:'Commanders',stats:{RUSH_YDS:919,RUSH_TD:5,REC_YDS:298,REC_TD:2,YPC:4.0},rating:74},
+    ],
+    '1980s':[
+      {name:'Eric Dickerson',team:'Rams',stats:{RUSH_YDS:2105,RUSH_TD:14,REC_YDS:148,REC_TD:1,YPC:5.6},rating:97},
+      {name:'Walter Payton',team:'Bears',stats:{RUSH_YDS:1684,RUSH_TD:11,REC_YDS:382,REC_TD:2,YPC:4.7},rating:96},
+      {name:'Marcus Allen',team:'Raiders',stats:{RUSH_YDS:1759,RUSH_TD:11,REC_YDS:448,REC_TD:5,YPC:5.0},rating:91},
+      {name:'Roger Craig',team:'49ers',stats:{RUSH_YDS:1502,RUSH_TD:9,REC_YDS:730,REC_TD:6,YPC:4.4},rating:88},
+      {name:'John Riggins',team:'Commanders',stats:{RUSH_YDS:1347,RUSH_TD:24,REC_YDS:144,REC_TD:0,YPC:3.8},rating:86},
+      {name:'Bo Jackson',team:'Raiders',stats:{RUSH_YDS:950,RUSH_TD:6,REC_YDS:62,REC_TD:0,YPC:6.8},rating:87},
+      {name:'Gerald Riggs',team:'Falcons',stats:{RUSH_YDS:1719,RUSH_TD:10,REC_YDS:106,REC_TD:1,YPC:4.3},rating:83},
+      {name:'Herschel Walker',team:'Cowboys',stats:{RUSH_YDS:1514,RUSH_TD:5,REC_YDS:450,REC_TD:1,YPC:4.2},rating:82},
+      {name:'Christian Okoye',team:'Chiefs',stats:{RUSH_YDS:1480,RUSH_TD:12,REC_YDS:104,REC_TD:0,YPC:4.5},rating:81},
+      {name:'Thurman Thomas',team:'Bills',stats:{RUSH_YDS:1487,RUSH_TD:12,REC_YDS:669,REC_TD:6,YPC:5.0},rating:88},
+      {name:'James Brooks',team:'Bengals',stats:{RUSH_YDS:1239,RUSH_TD:7,REC_YDS:574,REC_TD:5,YPC:5.6},rating:82},
+      {name:'Curt Warner',team:'Seahawks',stats:{RUSH_YDS:1481,RUSH_TD:13,REC_YDS:308,REC_TD:1,YPC:4.6},rating:80},
+    ],
+    '1990s':[
+      {name:'Barry Sanders',team:'Lions',stats:{RUSH_YDS:2053,RUSH_TD:11,REC_YDS:289,REC_TD:1,YPC:6.1},rating:99},
+      {name:'Emmitt Smith',team:'Cowboys',stats:{RUSH_YDS:1773,RUSH_TD:25,REC_YDS:458,REC_TD:1,YPC:4.7},rating:96},
+      {name:'Terrell Davis',team:'Broncos',stats:{RUSH_YDS:2008,RUSH_TD:21,REC_YDS:216,REC_TD:2,YPC:4.7},rating:94},
+      {name:'Marshall Faulk',team:'Colts',stats:{RUSH_YDS:1319,RUSH_TD:11,REC_YDS:690,REC_TD:8,YPC:4.8},rating:93},
+      {name:'Curtis Martin',team:'Jets',stats:{RUSH_YDS:1732,RUSH_TD:14,REC_YDS:408,REC_TD:2,YPC:4.5},rating:88},
+      {name:'Jerome Bettis',team:'Steelers',stats:{RUSH_YDS:1431,RUSH_TD:13,REC_YDS:214,REC_TD:1,YPC:3.8},rating:85},
+      {name:'Eddie George',team:'Titans',stats:{RUSH_YDS:1294,RUSH_TD:14,REC_YDS:280,REC_TD:2,YPC:4.0},rating:83},
+      {name:'Ricky Watters',team:'Eagles',stats:{RUSH_YDS:1411,RUSH_TD:11,REC_YDS:502,REC_TD:4,YPC:4.1},rating:82},
+      {name:'Garrison Hearst',team:'49ers',stats:{RUSH_YDS:1570,RUSH_TD:7,REC_YDS:302,REC_TD:0,YPC:5.1},rating:84},
+      {name:'Thurman Thomas',team:'Bills',stats:{RUSH_YDS:1442,RUSH_TD:9,REC_YDS:626,REC_TD:5,YPC:4.4},rating:87},
+      {name:'Dorsey Levens',team:'Packers',stats:{RUSH_YDS:1435,RUSH_TD:7,REC_YDS:373,REC_TD:5,YPC:4.4},rating:80},
+      {name:'Jamal Anderson',team:'Falcons',stats:{RUSH_YDS:1846,RUSH_TD:14,REC_YDS:319,REC_TD:2,YPC:4.8},rating:84},
+    ],
+    '2000s':[
+      {name:'LaDainian Tomlinson',team:'Chargers',stats:{RUSH_YDS:1815,RUSH_TD:28,REC_YDS:508,REC_TD:3,YPC:5.2},rating:99},
+      {name:'Marshall Faulk',team:'Rams',stats:{RUSH_YDS:1382,RUSH_TD:10,REC_YDS:588,REC_TD:8,YPC:5.4},rating:96},
+      {name:'Priest Holmes',team:'Chiefs',stats:{RUSH_YDS:1615,RUSH_TD:27,REC_YDS:690,REC_TD:8,YPC:5.1},rating:94},
+      {name:'Shaun Alexander',team:'Seahawks',stats:{RUSH_YDS:1880,RUSH_TD:27,REC_YDS:194,REC_TD:1,YPC:4.5},rating:93},
+      {name:'Jamal Lewis',team:'Ravens',stats:{RUSH_YDS:2066,RUSH_TD:14,REC_YDS:205,REC_TD:0,YPC:5.3},rating:91},
+      {name:'Adrian Peterson',team:'Vikings',stats:{RUSH_YDS:1341,RUSH_TD:12,REC_YDS:142,REC_TD:1,YPC:5.6},rating:90},
+      {name:'Edgerrin James',team:'Colts',stats:{RUSH_YDS:1553,RUSH_TD:13,REC_YDS:416,REC_TD:2,YPC:4.5},rating:89},
+      {name:'Clinton Portis',team:'Broncos',stats:{RUSH_YDS:1508,RUSH_TD:15,REC_YDS:298,REC_TD:2,YPC:5.5},rating:88},
+      {name:'Warrick Dunn',team:'Buccaneers',stats:{RUSH_YDS:1226,RUSH_TD:8,REC_YDS:438,REC_TD:2,YPC:4.7},rating:82},
+      {name:'Rudi Johnson',team:'Bengals',stats:{RUSH_YDS:1458,RUSH_TD:12,REC_YDS:196,REC_TD:0,YPC:4.4},rating:80},
+      {name:'Thomas Jones',team:'Bears',stats:{RUSH_YDS:1335,RUSH_TD:9,REC_YDS:192,REC_TD:1,YPC:4.5},rating:79},
+      {name:'Kevin Jones',team:'Lions',stats:{RUSH_YDS:1133,RUSH_TD:5,REC_YDS:296,REC_TD:1,YPC:4.1},rating:75},
+    ],
+    '2010s':[
+      {name:'Adrian Peterson',team:'Vikings',stats:{RUSH_YDS:2097,RUSH_TD:13,REC_YDS:217,REC_TD:0,YPC:6.0},rating:98},
+      {name:'Derrick Henry',team:'Titans',stats:{RUSH_YDS:2027,RUSH_TD:17,REC_YDS:114,REC_TD:0,YPC:5.4},rating:94},
+      {name:'Christian McCaffrey',team:'Panthers',stats:{RUSH_YDS:1387,RUSH_TD:8,REC_YDS:867,REC_TD:6,YPC:4.6},rating:93},
+      {name:'Marshawn Lynch',team:'Seahawks',stats:{RUSH_YDS:1590,RUSH_TD:17,REC_YDS:268,REC_TD:2,YPC:4.9},rating:93},
+      {name:"Le'Veon Bell",team:'Steelers',stats:{RUSH_YDS:1268,RUSH_TD:9,REC_YDS:655,REC_TD:2,YPC:4.9},rating:92},
+      {name:'Todd Gurley',team:'Rams',stats:{RUSH_YDS:1512,RUSH_TD:19,REC_YDS:497,REC_TD:6,YPC:4.9},rating:91},
+      {name:'Ezekiel Elliott',team:'Cowboys',stats:{RUSH_YDS:1631,RUSH_TD:15,REC_YDS:349,REC_TD:3,YPC:4.9},rating:91},
+      {name:'Saquon Barkley',team:'Giants',stats:{RUSH_YDS:1307,RUSH_TD:11,REC_YDS:721,REC_TD:4,YPC:5.0},rating:89},
+      {name:'Matt Forte',team:'Bears',stats:{RUSH_YDS:1339,RUSH_TD:9,REC_YDS:808,REC_TD:2,YPC:4.7},rating:87},
+      {name:'David Johnson',team:'Cardinals',stats:{RUSH_YDS:1239,RUSH_TD:16,REC_YDS:879,REC_TD:4,YPC:5.1},rating:89},
+      {name:'Kareem Hunt',team:'Chiefs',stats:{RUSH_YDS:1327,RUSH_TD:8,REC_YDS:455,REC_TD:3,YPC:4.9},rating:83},
+      {name:'Leonard Fournette',team:'Jaguars',stats:{RUSH_YDS:1040,RUSH_TD:9,REC_YDS:302,REC_TD:2,YPC:3.9},rating:78},
+    ],
+  },
+  WR:{
+    '1970s':[
+      {name:'Drew Pearson',team:'Cowboys',stats:{REC:58,REC_YDS:1087,TD:6,YPR:18.8,YAC:3.8},rating:85},
+      {name:'Cliff Branch',team:'Raiders',stats:{REC:46,REC_YDS:1111,TD:12,YPR:24.2,YAC:3.5},rating:85},
+      {name:'Lynn Swann',team:'Steelers',stats:{REC:49,REC_YDS:880,TD:11,YPR:18.0,YAC:4.2},rating:84},
+      {name:'John Stallworth',team:'Steelers',stats:{REC:70,REC_YDS:1395,TD:11,YPR:19.9,YAC:3.9},rating:84},
+      {name:'Harold Carmichael',team:'Eagles',stats:{REC:67,REC_YDS:1072,TD:11,YPR:16.0,YAC:4.0},rating:83},
+      {name:'Paul Warfield',team:'Dolphins',stats:{REC:29,REC_YDS:536,TD:8,YPR:18.5,YAC:3.2},rating:83},
+      {name:'Ahmad Rashad',team:'Vikings',stats:{REC:80,REC_YDS:1095,TD:9,YPR:13.7,YAC:4.1},rating:80},
+      {name:'Bob Hayes',team:'Cowboys',stats:{REC:34,REC_YDS:649,TD:7,YPR:19.1,YAC:3.5},rating:79},
+      {name:'Charley Taylor',team:'Commanders',stats:{REC:59,REC_YDS:793,TD:7,YPR:13.4,YAC:3.8},rating:78},
+      {name:'Ken Burrough',team:'Texans',stats:{REC:53,REC_YDS:1063,TD:8,YPR:20.1,YAC:3.3},rating:80},
+      {name:'Mel Gray',team:'Cardinals',stats:{REC:48,REC_YDS:926,TD:6,YPR:19.3,YAC:3.6},rating:78},
+      {name:'Isaac Curtis',team:'Bengals',stats:{REC:44,REC_YDS:934,TD:10,YPR:21.2,YAC:3.4},rating:80},
+    ],
+    '1980s':[
+      {name:'Jerry Rice',team:'49ers',stats:{REC:86,REC_YDS:1570,TD:15,YPR:18.2,YAC:5.1},rating:99},
+      {name:'Michael Irvin',team:'Cowboys',stats:{REC:93,REC_YDS:1523,TD:8,YPR:16.4,YAC:4.1},rating:90},
+      {name:'Art Monk',team:'Commanders',stats:{REC:106,REC_YDS:1372,TD:7,YPR:12.9,YAC:4.2},rating:89},
+      {name:'Steve Largent',team:'Seahawks',stats:{REC:79,REC_YDS:1287,TD:9,YPR:16.3,YAC:4.0},rating:88},
+      {name:'James Lofton',team:'Packers',stats:{REC:71,REC_YDS:1361,TD:8,YPR:19.2,YAC:3.7},rating:87},
+      {name:'Mark Duper',team:'Dolphins',stats:{REC:71,REC_YDS:1313,TD:8,YPR:18.5,YAC:3.9},rating:84},
+      {name:'Wes Chandler',team:'Chargers',stats:{REC:69,REC_YDS:1299,TD:9,YPR:18.8,YAC:3.5},rating:83},
+      {name:'Charlie Joiner',team:'Chargers',stats:{REC:65,REC_YDS:1132,TD:7,YPR:17.4,YAC:3.6},rating:82},
+      {name:'Al Toon',team:'Jets',stats:{REC:93,REC_YDS:1067,TD:5,YPR:11.5,YAC:5.2},rating:80},
+      {name:'Roy Green',team:'Cardinals',stats:{REC:78,REC_YDS:1555,TD:14,YPR:19.9,YAC:3.8},rating:86},
+      {name:'Drew Hill',team:'Titans',stats:{REC:74,REC_YDS:1169,TD:10,YPR:15.8,YAC:3.7},rating:82},
+      {name:'Mark Clayton',team:'Dolphins',stats:{REC:73,REC_YDS:1389,TD:18,YPR:19.0,YAC:3.6},rating:84},
+    ],
+    '1990s':[
+      {name:'Jerry Rice',team:'49ers',stats:{REC:122,REC_YDS:1848,TD:17,YPR:15.2,YAC:5.3},rating:99},
+      {name:'Cris Carter',team:'Vikings',stats:{REC:122,REC_YDS:1371,TD:17,YPR:11.2,YAC:5.5},rating:93},
+      {name:'Michael Irvin',team:'Cowboys',stats:{REC:111,REC_YDS:1603,TD:10,YPR:14.4,YAC:4.3},rating:92},
+      {name:'Herman Moore',team:'Lions',stats:{REC:123,REC_YDS:1686,TD:14,YPR:13.7,YAC:4.5},rating:88},
+      {name:'Tim Brown',team:'Raiders',stats:{REC:104,REC_YDS:1408,TD:9,YPR:13.5,YAC:4.1},rating:88},
+      {name:'Andre Reed',team:'Bills',stats:{REC:90,REC_YDS:1312,TD:8,YPR:14.6,YAC:4.8},rating:87},
+      {name:'Carl Pickens',team:'Bengals',stats:{REC:100,REC_YDS:1234,TD:17,YPR:12.3,YAC:4.0},rating:85},
+      {name:'Keyshawn Johnson',team:'Jets',stats:{REC:89,REC_YDS:1131,TD:8,YPR:12.7,YAC:5.0},rating:82},
+      {name:'Keenan McCardell',team:'Jaguars',stats:{REC:85,REC_YDS:1164,TD:6,YPR:13.7,YAC:4.2},rating:80},
+      {name:'Rob Moore',team:'Cardinals',stats:{REC:97,REC_YDS:1584,TD:8,YPR:16.3,YAC:3.9},rating:83},
+      {name:'Isaac Bruce',team:'Rams',stats:{REC:119,REC_YDS:1781,TD:13,YPR:15.0,YAC:4.4},rating:88},
+      {name:'Torry Holt',team:'Rams',stats:{REC:82,REC_YDS:1635,TD:6,YPR:19.9,YAC:4.5},rating:85},
+    ],
+    '2000s':[
+      {name:'Randy Moss',team:'Patriots',stats:{REC:98,REC_YDS:1493,TD:23,YPR:15.2,YAC:3.9},rating:98},
+      {name:'Marvin Harrison',team:'Colts',stats:{REC:143,REC_YDS:1722,TD:15,YPR:12.0,YAC:4.0},rating:97},
+      {name:'Torry Holt',team:'Rams',stats:{REC:117,REC_YDS:1696,TD:12,YPR:14.5,YAC:4.2},rating:92},
+      {name:'Terrell Owens',team:'Eagles',stats:{REC:77,REC_YDS:1200,TD:14,YPR:15.6,YAC:3.7},rating:91},
+      {name:'Chad Johnson',team:'Bengals',stats:{REC:97,REC_YDS:1440,TD:9,YPR:14.8,YAC:3.8},rating:89},
+      {name:'Steve Smith',team:'Panthers',stats:{REC:103,REC_YDS:1563,TD:12,YPR:15.2,YAC:4.5},rating:88},
+      {name:'Reggie Wayne',team:'Colts',stats:{REC:95,REC_YDS:1310,TD:10,YPR:13.8,YAC:4.1},rating:87},
+      {name:'Anquan Boldin',team:'Cardinals',stats:{REC:102,REC_YDS:1402,TD:10,YPR:13.7,YAC:5.0},rating:86},
+      {name:'Hines Ward',team:'Steelers',stats:{REC:112,REC_YDS:1329,TD:11,YPR:11.9,YAC:5.3},rating:85},
+      {name:'Plaxico Burress',team:'Giants',stats:{REC:70,REC_YDS:1214,TD:12,YPR:17.3,YAC:3.8},rating:83},
+      {name:'Javon Walker',team:'Packers',stats:{REC:89,REC_YDS:1382,TD:12,YPR:15.5,YAC:4.0},rating:84},
+      {name:'Donald Driver',team:'Packers',stats:{REC:92,REC_YDS:1295,TD:9,YPR:14.1,YAC:4.6},rating:82},
+    ],
+    '2010s':[
+      {name:'Antonio Brown',team:'Steelers',stats:{REC:136,REC_YDS:1834,TD:12,YPR:13.5,YAC:5.1},rating:97},
+      {name:'Calvin Johnson',team:'Lions',stats:{REC:122,REC_YDS:1964,TD:5,YPR:16.1,YAC:4.2},rating:97},
+      {name:'Julio Jones',team:'Falcons',stats:{REC:113,REC_YDS:1871,TD:8,YPR:16.6,YAC:4.5},rating:95},
+      {name:'Davante Adams',team:'Packers',stats:{REC:115,REC_YDS:1374,TD:14,YPR:11.9,YAC:5.2},rating:93},
+      {name:'DeAndre Hopkins',team:'Texans',stats:{REC:115,REC_YDS:1572,TD:11,YPR:13.7,YAC:4.8},rating:93},
+      {name:'Tyreek Hill',team:'Chiefs',stats:{REC:87,REC_YDS:1416,TD:12,YPR:16.3,YAC:6.1},rating:93},
+      {name:'Odell Beckham Jr.',team:'Giants',stats:{REC:91,REC_YDS:1305,TD:12,YPR:14.3,YAC:5.5},rating:91},
+      {name:'A.J. Green',team:'Bengals',stats:{REC:97,REC_YDS:1426,TD:11,YPR:14.7,YAC:4.3},rating:90},
+      {name:'Stefon Diggs',team:'Vikings',stats:{REC:94,REC_YDS:1130,TD:6,YPR:12.0,YAC:5.0},rating:87},
+      {name:'Mike Evans',team:'Buccaneers',stats:{REC:96,REC_YDS:1524,TD:12,YPR:15.9,YAC:4.1},rating:90},
+      {name:'Keenan Allen',team:'Chargers',stats:{REC:102,REC_YDS:1199,TD:6,YPR:11.8,YAC:5.4},rating:87},
+      {name:'Brandin Cooks',team:'Patriots',stats:{REC:65,REC_YDS:1082,TD:7,YPR:16.6,YAC:4.8},rating:82},
+    ],
+  },
+  TE:{
+    '1970s':[
+      {name:'Dave Casper',team:'Raiders',stats:{REC:53,REC_YDS:796,TD:10,YPR:15.0,YPG:56.9},rating:88},
+      {name:'Russ Francis',team:'Patriots',stats:{REC:39,REC_YDS:670,TD:5,YPR:17.2,YPG:47.9},rating:83},
+      {name:'Charlie Sanders',team:'Lions',stats:{REC:42,REC_YDS:590,TD:4,YPR:14.0,YPG:42.1},rating:82},
+      {name:'Ted Kwalick',team:'49ers',stats:{REC:52,REC_YDS:795,TD:6,YPR:15.3,YPG:56.8},rating:78},
+      {name:'Bob Tucker',team:'Giants',stats:{REC:59,REC_YDS:791,TD:4,YPR:13.4,YPG:56.5},rating:79},
+      {name:'Ozzie Newsome',team:'Browns',stats:{REC:38,REC_YDS:589,TD:2,YPR:15.5,YPG:42.1},rating:80},
+      {name:'Riley Odoms',team:'Broncos',stats:{REC:42,REC_YDS:566,TD:4,YPR:13.5,YPG:40.4},rating:76},
+      {name:'Jean Fugett',team:'Cowboys',stats:{REC:33,REC_YDS:466,TD:4,YPR:14.1,YPG:33.3},rating:74},
+      {name:'Jim Mitchell',team:'Falcons',stats:{REC:40,REC_YDS:487,TD:3,YPR:12.2,YPG:34.8},rating:72},
+      {name:'Charle Young',team:'Eagles',stats:{REC:40,REC_YDS:566,TD:6,YPR:14.2,YPG:40.4},rating:75},
+      {name:'Raymond Chester',team:'Raiders',stats:{REC:42,REC_YDS:618,TD:6,YPR:14.7,YPG:44.1},rating:77},
+      {name:'Russ Francis',team:'Patriots',stats:{REC:26,REC_YDS:367,TD:4,YPR:14.1,YPG:26.2},rating:73},
+    ],
+    '1980s':[
+      {name:'Kellen Winslow',team:'Chargers',stats:{REC:89,REC_YDS:1290,TD:10,YPR:14.5,YPG:92.1},rating:97},
+      {name:'Todd Christensen',team:'Raiders',stats:{REC:95,REC_YDS:1153,TD:12,YPR:12.1,YPG:82.4},rating:89},
+      {name:'Ozzie Newsome',team:'Browns',stats:{REC:89,REC_YDS:1002,TD:5,YPR:11.3,YPG:71.6},rating:88},
+      {name:'Jimmie Giles',team:'Buccaneers',stats:{REC:54,REC_YDS:786,TD:9,YPR:14.6,YPG:56.1},rating:80},
+      {name:'Russ Francis',team:'49ers',stats:{REC:44,REC_YDS:735,TD:5,YPR:16.7,YPG:52.5},rating:83},
+      {name:'Steve Jordan',team:'Vikings',stats:{REC:68,REC_YDS:859,TD:5,YPR:12.6,YPG:61.4},rating:80},
+      {name:'Mickey Shuler',team:'Jets',stats:{REC:70,REC_YDS:879,TD:6,YPR:12.6,YPG:62.8},rating:78},
+      {name:'Keith Jackson',team:'Eagles',stats:{REC:81,REC_YDS:869,TD:6,YPR:10.7,YPG:62.1},rating:82},
+      {name:'Don Warren',team:'Commanders',stats:{REC:39,REC_YDS:461,TD:4,YPR:11.8,YPG:32.9},rating:74},
+      {name:'Pat Carter',team:'Lions',stats:{REC:35,REC_YDS:444,TD:4,YPR:12.7,YPG:31.7},rating:72},
+      {name:'Eric Sievers',team:'Chargers',stats:{REC:42,REC_YDS:552,TD:5,YPR:13.1,YPG:39.4},rating:74},
+      {name:'Mark Bavaro',team:'Giants',stats:{REC:66,REC_YDS:1001,TD:4,YPR:15.2,YPG:71.5},rating:82},
+    ],
+    '1990s':[
+      {name:'Shannon Sharpe',team:'Broncos',stats:{REC:96,REC_YDS:1107,TD:10,YPR:11.5,YPG:79.1},rating:95},
+      {name:'Ben Coates',team:'Patriots',stats:{REC:96,REC_YDS:1174,TD:8,YPR:12.2,YPG:83.9},rating:89},
+      {name:'Keith Jackson',team:'Eagles',stats:{REC:81,REC_YDS:869,TD:9,YPR:10.7,YPG:62.1},rating:85},
+      {name:'Tony Gonzalez',team:'Chiefs',stats:{REC:76,REC_YDS:849,TD:6,YPR:11.2,YPG:60.6},rating:88},
+      {name:'Jay Novacek',team:'Cowboys',stats:{REC:68,REC_YDS:699,TD:5,YPR:10.3,YPG:49.9},rating:84},
+      {name:'Wesley Walls',team:'Panthers',stats:{REC:58,REC_YDS:713,TD:10,YPR:12.3,YPG:50.9},rating:82},
+      {name:'Eric Green',team:'Steelers',stats:{REC:63,REC_YDS:942,TD:7,YPR:14.9,YPG:67.3},rating:80},
+      {name:'Johnny Mitchell',team:'Jets',stats:{REC:39,REC_YDS:630,TD:4,YPR:16.2,YPG:45.0},rating:73},
+      {name:'Ferrell Edmunds',team:'Dolphins',stats:{REC:48,REC_YDS:609,TD:5,YPR:12.7,YPG:43.5},rating:74},
+      {name:'Brent Jones',team:'49ers',stats:{REC:60,REC_YDS:735,TD:7,YPR:12.3,YPG:52.5},rating:79},
+      {name:'Pete Mitchell',team:'Jaguars',stats:{REC:59,REC_YDS:789,TD:4,YPR:13.4,YPG:56.4},rating:75},
+      {name:'Frank Wycheck',team:'Titans',stats:{REC:70,REC_YDS:768,TD:5,YPR:11.0,YPG:54.9},rating:76},
+    ],
+    '2000s':[
+      {name:'Tony Gonzalez',team:'Chiefs',stats:{REC:102,REC_YDS:1258,TD:10,YPR:12.3,YPG:89.9},rating:98},
+      {name:'Antonio Gates',team:'Chargers',stats:{REC:89,REC_YDS:1101,TD:13,YPR:12.4,YPG:78.6},rating:96},
+      {name:'Jason Witten',team:'Cowboys',stats:{REC:96,REC_YDS:1145,TD:7,YPR:11.9,YPG:81.8},rating:91},
+      {name:'Alge Crumpler',team:'Falcons',stats:{REC:73,REC_YDS:877,TD:8,YPR:12.0,YPG:62.6},rating:84},
+      {name:'Jeremy Shockey',team:'Giants',stats:{REC:74,REC_YDS:891,TD:7,YPR:12.0,YPG:63.6},rating:83},
+      {name:'Dallas Clark',team:'Colts',stats:{REC:77,REC_YDS:838,TD:6,YPR:10.9,YPG:59.9},rating:82},
+      {name:'Chris Cooley',team:'Commanders',stats:{REC:66,REC_YDS:774,TD:7,YPR:11.7,YPG:55.3},rating:80},
+      {name:'Brent Celek',team:'Eagles',stats:{REC:76,REC_YDS:971,TD:8,YPR:12.8,YPG:69.4},rating:78},
+      {name:'Randy McMichael',team:'Dolphins',stats:{REC:73,REC_YDS:791,TD:5,YPR:10.8,YPG:56.5},rating:76},
+      {name:'Vernon Davis',team:'49ers',stats:{REC:78,REC_YDS:965,TD:13,YPR:12.4,YPG:68.9},rating:86},
+      {name:'Owen Daniels',team:'Texans',stats:{REC:63,REC_YDS:862,TD:5,YPR:13.7,YPG:61.6},rating:78},
+      {name:'Heath Miller',team:'Steelers',stats:{REC:66,REC_YDS:774,TD:6,YPR:11.7,YPG:55.3},rating:78},
+    ],
+    '2010s':[
+      {name:'Rob Gronkowski',team:'Patriots',stats:{REC:90,REC_YDS:1327,TD:17,YPR:14.7,YPG:94.8},rating:99},
+      {name:'Travis Kelce',team:'Chiefs',stats:{REC:103,REC_YDS:1336,TD:10,YPR:13.0,YPG:95.4},rating:98},
+      {name:'Jimmy Graham',team:'Saints',stats:{REC:99,REC_YDS:1310,TD:16,YPR:13.2,YPG:93.6},rating:93},
+      {name:'Greg Olsen',team:'Panthers',stats:{REC:77,REC_YDS:1073,TD:7,YPR:13.9,YPG:76.6},rating:87},
+      {name:'Zach Ertz',team:'Eagles',stats:{REC:116,REC_YDS:1163,TD:8,YPR:10.0,YPG:83.1},rating:87},
+      {name:'Tyler Eifert',team:'Bengals',stats:{REC:52,REC_YDS:615,TD:13,YPR:11.8,YPG:43.9},rating:82},
+      {name:'Kyle Rudolph',team:'Vikings',stats:{REC:83,REC_YDS:840,TD:12,YPR:10.1,YPG:60.0},rating:82},
+      {name:'Eric Ebron',team:'Colts',stats:{REC:66,REC_YDS:750,TD:14,YPR:11.4,YPG:53.6},rating:80},
+      {name:'Delanie Walker',team:'Titans',stats:{REC:74,REC_YDS:800,TD:7,YPR:10.8,YPG:57.1},rating:80},
+      {name:'Hunter Henry',team:'Chargers',stats:{REC:55,REC_YDS:652,TD:8,YPR:11.9,YPG:46.6},rating:79},
+      {name:'Jordan Reed',team:'Commanders',stats:{REC:87,REC_YDS:952,TD:11,YPR:10.9,YPG:68.0},rating:83},
+      {name:'O.J. Howard',team:'Buccaneers',stats:{REC:34,REC_YDS:565,TD:6,YPR:16.6,YPG:40.4},rating:76},
+    ],
+  },
+  DB:{
+    '1970s':[
+      {name:'Mel Blount',team:'Steelers',stats:{INT:11,PD:24,FF:2,TKL:62,RET:0},rating:94},
+      {name:'Cliff Harris',team:'Cowboys',stats:{INT:9,PD:21,FF:3,TKL:74,RET:1},rating:87},
+      {name:'Roger Wehrli',team:'Cardinals',stats:{INT:7,PD:22,FF:1,TKL:50,RET:2},rating:85},
+      {name:'Willie Brown',team:'Raiders',stats:{INT:6,PD:19,FF:1,TKL:48,RET:1},rating:84},
+      {name:'Lem Barney',team:'Lions',stats:{INT:7,PD:17,FF:1,TKL:44,RET:3},rating:83},
+      {name:'Louis Wright',team:'Broncos',stats:{INT:6,PD:18,FF:2,TKL:55,RET:1},rating:80},
+      {name:'Pat Fischer',team:'Commanders',stats:{INT:5,PD:16,FF:1,TKL:52,RET:1},rating:78},
+      {name:'Emmitt Thomas',team:'Chiefs',stats:{INT:9,PD:20,FF:1,TKL:48,RET:2},rating:82},
+      {name:'Jimmy Johnson',team:'49ers',stats:{INT:7,PD:18,FF:1,TKL:44,RET:0},rating:79},
+      {name:'Lemar Parrish',team:'Bengals',stats:{INT:8,PD:19,FF:2,TKL:46,RET:2},rating:81},
+      {name:'Nate Wright',team:'Vikings',stats:{INT:6,PD:16,FF:1,TKL:40,RET:1},rating:76},
+      {name:'Monte Jackson',team:'Rams',stats:{INT:10,PD:22,FF:1,TKL:42,RET:2},rating:82},
+    ],
+    '1980s':[
+      {name:'Mike Haynes',team:'Raiders',stats:{INT:8,PD:27,FF:2,TKL:60,RET:3},rating:90},
+      {name:'Kenny Easley',team:'Seahawks',stats:{INT:10,PD:26,FF:3,TKL:80,RET:0},rating:92},
+      {name:'Darrell Green',team:'Commanders',stats:{INT:6,PD:24,FF:2,TKL:58,RET:2},rating:88},
+      {name:'Everson Walls',team:'Cowboys',stats:{INT:11,PD:22,FF:1,TKL:52,RET:0},rating:87},
+      {name:'Eric Allen',team:'Eagles',stats:{INT:8,PD:24,FF:2,TKL:56,RET:3},rating:86},
+      {name:'Deron Cherry',team:'Chiefs',stats:{INT:9,PD:20,FF:1,TKL:58,RET:0},rating:83},
+      {name:'Hanford Dixon',team:'Browns',stats:{INT:9,PD:22,FF:2,TKL:60,RET:1},rating:84},
+      {name:'Dave Brown',team:'Steelers',stats:{INT:5,PD:19,FF:2,TKL:62,RET:0},rating:81},
+      {name:'Frank Minnifield',team:'Browns',stats:{INT:8,PD:21,FF:2,TKL:54,RET:1},rating:83},
+      {name:'Jerry Gray',team:'Rams',stats:{INT:7,PD:20,FF:1,TKL:48,RET:1},rating:79},
+      {name:'Mark Haynes',team:'Giants',stats:{INT:6,PD:18,FF:1,TKL:50,RET:1},rating:78},
+      {name:'Albert Lewis',team:'Chiefs',stats:{INT:7,PD:22,FF:2,TKL:52,RET:1},rating:80},
+    ],
+    '1990s':[
+      {name:'Deion Sanders',team:'49ers',stats:{INT:7,PD:37,FF:2,TKL:38,RET:3},rating:98},
+      {name:'Aeneas Williams',team:'Cardinals',stats:{INT:9,PD:33,FF:3,TKL:58,RET:2},rating:91},
+      {name:'Darrell Green',team:'Commanders',stats:{INT:6,PD:28,FF:2,TKL:62,RET:3},rating:90},
+      {name:'Ty Law',team:'Patriots',stats:{INT:8,PD:28,FF:2,TKL:54,RET:2},rating:87},
+      {name:'Ray Buchanan',team:'Falcons',stats:{INT:8,PD:24,FF:2,TKL:55,RET:1},rating:82},
+      {name:'Terry McDaniel',team:'Raiders',stats:{INT:8,PD:26,FF:2,TKL:50,RET:2},rating:83},
+      {name:'Ashley Ambrose',team:'Bengals',stats:{INT:6,PD:20,FF:2,TKL:52,RET:0},rating:77},
+      {name:'Eric Davis',team:'Panthers',stats:{INT:7,PD:24,FF:2,TKL:56,RET:1},rating:80},
+      {name:'Dale Carter',team:'Chiefs',stats:{INT:8,PD:26,FF:2,TKL:48,RET:2},rating:83},
+      {name:'Larry Brown',team:'Cowboys',stats:{INT:6,PD:18,FF:1,TKL:44,RET:0},rating:75},
+      {name:'Carnell Lake',team:'Steelers',stats:{INT:7,PD:22,FF:3,TKL:78,RET:0},rating:85},
+      {name:'Samari Rolle',team:'Titans',stats:{INT:6,PD:22,FF:1,TKL:50,RET:0},rating:78},
+    ],
+    '2000s':[
+      {name:'Champ Bailey',team:'Broncos',stats:{INT:10,PD:35,FF:2,TKL:65,RET:1},rating:95},
+      {name:'Charles Woodson',team:'Raiders',stats:{INT:8,PD:30,FF:3,TKL:70,RET:2},rating:93},
+      {name:'Ronde Barber',team:'Buccaneers',stats:{INT:10,PD:29,FF:2,TKL:65,RET:2},rating:88},
+      {name:'Nnamdi Asomugha',team:'Raiders',stats:{INT:6,PD:31,FF:1,TKL:42,RET:0},rating:88},
+      {name:'Marcus Peters',team:'Chiefs',stats:{INT:8,PD:26,FF:2,TKL:50,RET:2},rating:84},
+      {name:'Brian Dawkins',team:'Eagles',stats:{INT:6,PD:22,FF:3,TKL:82,RET:1},rating:91},
+      {name:'Antoine Winfield',team:'Vikings',stats:{INT:7,PD:21,FF:3,TKL:90,RET:0},rating:86},
+      {name:'Ty Law',team:'Patriots',stats:{INT:7,PD:24,FF:2,TKL:50,RET:1},rating:85},
+      {name:'Terence Newman',team:'Cowboys',stats:{INT:6,PD:24,FF:2,TKL:56,RET:1},rating:82},
+      {name:'Samari Rolle',team:'Ravens',stats:{INT:6,PD:20,FF:1,TKL:48,RET:0},rating:78},
+      {name:'Kelly Jennings',team:'Seahawks',stats:{INT:5,PD:18,FF:1,TKL:44,RET:1},rating:74},
+      {name:'Chris McAlister',team:'Ravens',stats:{INT:7,PD:24,FF:2,TKL:52,RET:2},rating:84},
+    ],
+    '2010s':[
+      {name:'Darrelle Revis',team:'Jets',stats:{INT:6,PD:32,FF:1,TKL:48,RET:0},rating:95},
+      {name:'Richard Sherman',team:'Seahawks',stats:{INT:8,PD:36,FF:2,TKL:58,RET:1},rating:96},
+      {name:'Patrick Peterson',team:'Cardinals',stats:{INT:8,PD:32,FF:2,TKL:50,RET:3},rating:94},
+      {name:'Stephon Gilmore',team:'Patriots',stats:{INT:6,PD:20,FF:2,TKL:52,RET:0},rating:90},
+      {name:'Tyrann Mathieu',team:'Cardinals',stats:{INT:6,PD:24,FF:4,TKL:75,RET:2},rating:89},
+      {name:'Aqib Talib',team:'Broncos',stats:{INT:8,PD:26,FF:2,TKL:48,RET:1},rating:87},
+      {name:'Marcus Peters',team:'Rams',stats:{INT:8,PD:29,FF:2,TKL:44,RET:3},rating:86},
+      {name:'Jalen Ramsey',team:'Rams',stats:{INT:4,PD:26,FF:2,TKL:60,RET:0},rating:88},
+      {name:'Chris Harris Jr.',team:'Broncos',stats:{INT:7,PD:22,FF:2,TKL:60,RET:0},rating:86},
+      {name:'A.J. Bouye',team:'Jaguars',stats:{INT:6,PD:24,FF:1,TKL:48,RET:0},rating:82},
+      {name:'Xavien Howard',team:'Dolphins',stats:{INT:7,PD:24,FF:1,TKL:44,RET:0},rating:83},
+      {name:'Casey Hayward',team:'Chargers',stats:{INT:7,PD:22,FF:1,TKL:50,RET:0},rating:82},
+    ],
+  },
+  S:{
+    '1970s':[
+      {name:'Jack Tatum',team:'Raiders',stats:{INT:7,TKL:70,FF:3,PD:20,BLTZ:18},rating:90},
+      {name:'Dick Anderson',team:'Dolphins',stats:{INT:8,TKL:55,FF:1,PD:18,BLTZ:12},rating:86},
+      {name:'Ken Houston',team:'Commanders',stats:{INT:9,TKL:68,FF:3,PD:22,BLTZ:20},rating:92},
+      {name:'Paul Krause',team:'Vikings',stats:{INT:10,TKL:52,FF:2,PD:20,BLTZ:10},rating:88},
+      {name:'Larry Wilson',team:'Cardinals',stats:{INT:8,TKL:64,FF:4,PD:18,BLTZ:24},rating:87},
+      {name:'Willie Wood',team:'Packers',stats:{INT:7,TKL:58,FF:2,PD:16,BLTZ:12},rating:84},
+      {name:'Cliff Harris',team:'Cowboys',stats:{INT:7,TKL:74,FF:4,PD:19,BLTZ:22},rating:87},
+      {name:'Mike Wagner',team:'Steelers',stats:{INT:8,TKL:62,FF:2,PD:18,BLTZ:14},rating:83},
+      {name:'Glen Edwards',team:'Steelers',stats:{INT:6,TKL:56,FF:2,PD:16,BLTZ:12},rating:80},
+      {name:'Charlie Waters',team:'Cowboys',stats:{INT:9,TKL:66,FF:3,PD:20,BLTZ:16},rating:84},
+      {name:'Kermit Alexander',team:'Rams',stats:{INT:6,TKL:60,FF:2,PD:14,BLTZ:10},rating:78},
+      {name:'Tom Myers',team:'Saints',stats:{INT:5,TKL:54,FF:1,PD:14,BLTZ:10},rating:74},
+    ],
+    '1980s':[
+      {name:'Ronnie Lott',team:'49ers',stats:{INT:10,TKL:85,FF:4,PD:30,BLTZ:20},rating:99},
+      {name:'Kenny Easley',team:'Seahawks',stats:{INT:10,TKL:80,FF:3,PD:26,BLTZ:18},rating:92},
+      {name:'Deron Cherry',team:'Chiefs',stats:{INT:9,TKL:58,FF:1,PD:20,BLTZ:14},rating:83},
+      {name:'Gary Fencik',team:'Bears',stats:{INT:6,TKL:72,FF:2,PD:18,BLTZ:14},rating:80},
+      {name:'Nolan Cromwell',team:'Rams',stats:{INT:7,TKL:68,FF:3,PD:20,BLTZ:16},rating:82},
+      {name:'Dennis Smith',team:'Broncos',stats:{INT:8,TKL:76,FF:3,PD:22,BLTZ:18},rating:84},
+      {name:'Vann McElroy',team:'Raiders',stats:{INT:8,TKL:62,FF:2,PD:18,BLTZ:14},rating:80},
+      {name:'Terry Kinard',team:'Giants',stats:{INT:7,TKL:64,FF:2,PD:16,BLTZ:12},rating:79},
+      {name:'Mike Harden',team:'Broncos',stats:{INT:6,TKL:58,FF:2,PD:16,BLTZ:12},rating:77},
+      {name:'Mark Murphy',team:'Commanders',stats:{INT:8,TKL:64,FF:2,PD:18,BLTZ:14},rating:79},
+      {name:'Wes Hopkins',team:'Eagles',stats:{INT:7,TKL:72,FF:3,PD:18,BLTZ:16},rating:80},
+      {name:'Carlton Williamson',team:'49ers',stats:{INT:5,TKL:60,FF:2,PD:14,BLTZ:10},rating:76},
+    ],
+    '1990s':[
+      {name:'Rod Woodson',team:'Steelers',stats:{INT:8,TKL:72,FF:3,PD:31,BLTZ:16},rating:97},
+      {name:'Carnell Lake',team:'Steelers',stats:{INT:7,TKL:78,FF:3,PD:22,BLTZ:14},rating:85},
+      {name:'Steve Atwater',team:'Broncos',stats:{INT:7,TKL:80,FF:3,PD:20,BLTZ:22},rating:86},
+      {name:'LeRoy Butler',team:'Packers',stats:{INT:6,TKL:74,FF:4,PD:18,BLTZ:18},rating:84},
+      {name:'Darren Woodson',team:'Cowboys',stats:{INT:5,TKL:90,FF:3,PD:18,BLTZ:16},rating:83},
+      {name:'Tim McDonald',team:'49ers',stats:{INT:7,TKL:76,FF:2,PD:22,BLTZ:14},rating:82},
+      {name:'Lawyer Milloy',team:'Patriots',stats:{INT:5,TKL:82,FF:3,PD:16,BLTZ:20},rating:82},
+      {name:'Eugene Robinson',team:'Seahawks',stats:{INT:9,TKL:64,FF:2,PD:20,BLTZ:12},rating:82},
+      {name:'Michael Bates',team:'Panthers',stats:{INT:4,TKL:68,FF:2,PD:14,BLTZ:10},rating:75},
+      {name:'Willie Clay',team:'Patriots',stats:{INT:6,TKL:60,FF:2,PD:16,BLTZ:12},rating:76},
+      {name:'Merton Hanks',team:'49ers',stats:{INT:7,TKL:56,FF:2,PD:18,BLTZ:10},rating:78},
+      {name:'Carnell Lake',team:'Steelers',stats:{INT:5,TKL:76,FF:2,PD:18,BLTZ:12},rating:81},
+    ],
+    '2000s':[
+      {name:'Ed Reed',team:'Ravens',stats:{INT:9,TKL:60,FF:3,PD:28,BLTZ:16},rating:98},
+      {name:'Troy Polamalu',team:'Steelers',stats:{INT:7,TKL:90,FF:4,PD:24,BLTZ:28},rating:97},
+      {name:'Brian Dawkins',team:'Eagles',stats:{INT:6,TKL:82,FF:3,PD:22,BLTZ:22},rating:91},
+      {name:'Bob Sanders',team:'Colts',stats:{INT:6,TKL:86,FF:4,PD:18,BLTZ:20},rating:86},
+      {name:'Rodney Harrison',team:'Patriots',stats:{INT:5,TKL:84,FF:3,PD:16,BLTZ:18},rating:82},
+      {name:'Adrian Wilson',team:'Cardinals',stats:{INT:6,TKL:84,FF:3,PD:18,BLTZ:22},rating:83},
+      {name:'Lawyer Milloy',team:'Bills',stats:{INT:4,TKL:80,FF:3,PD:14,BLTZ:18},rating:79},
+      {name:'John Lynch',team:'Buccaneers',stats:{INT:4,TKL:76,FF:2,PD:16,BLTZ:14},rating:80},
+      {name:'Chris Hope',team:'Titans',stats:{INT:5,TKL:78,FF:2,PD:14,BLTZ:14},rating:77},
+      {name:'Deon Grant',team:'Seahawks',stats:{INT:6,TKL:72,FF:2,PD:16,BLTZ:12},rating:76},
+      {name:'Antrel Rolle',team:'Cardinals',stats:{INT:5,TKL:64,FF:2,PD:18,BLTZ:12},rating:78},
+      {name:'Nick Collins',team:'Packers',stats:{INT:7,TKL:62,FF:2,PD:18,BLTZ:14},rating:82},
+    ],
+    '2010s':[
+      {name:'Earl Thomas',team:'Seahawks',stats:{INT:7,TKL:80,FF:3,PD:26,BLTZ:16},rating:93},
+      {name:'Harrison Smith',team:'Vikings',stats:{INT:6,TKL:88,FF:3,PD:19,BLTZ:22},rating:88},
+      {name:'Tyrann Mathieu',team:'Cardinals',stats:{INT:6,TKL:75,FF:4,PD:24,BLTZ:18},rating:89},
+      {name:'Landon Collins',team:'Giants',stats:{INT:5,TKL:96,FF:3,PD:16,BLTZ:20},rating:85},
+      {name:'Kam Chancellor',team:'Seahawks',stats:{INT:4,TKL:88,FF:3,PD:18,BLTZ:14},rating:86},
+      {name:'Eric Berry',team:'Chiefs',stats:{INT:6,TKL:74,FF:3,PD:20,BLTZ:18},rating:87},
+      {name:'Jamal Adams',team:'Jets',stats:{INT:3,TKL:84,FF:4,PD:14,BLTZ:26},rating:84},
+      {name:'Kevin Byard',team:'Titans',stats:{INT:8,TKL:66,FF:2,PD:20,BLTZ:12},rating:84},
+      {name:'Marcus Williams',team:'Saints',stats:{INT:5,TKL:58,FF:1,PD:16,BLTZ:10},rating:78},
+      {name:'Jessie Bates III',team:'Bengals',stats:{INT:6,TKL:68,FF:2,PD:18,BLTZ:12},rating:80},
+      {name:'Budda Baker',team:'Cardinals',stats:{INT:4,TKL:90,FF:3,PD:14,BLTZ:20},rating:82},
+      {name:'Jordan Poyer',team:'Bills',stats:{INT:6,TKL:72,FF:2,PD:16,BLTZ:12},rating:80},
+    ],
+  },
+};
 </script>
 </body>
 </html>
