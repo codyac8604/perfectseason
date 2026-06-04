@@ -208,7 +208,7 @@ body{font-family:'Oswald',sans-serif;background:#0a0f1a;color:#e8e0d0;min-height
       <div class="intro-rules">
         <div class="rule-item"><div class="rule-num">6</div><div class="rule-text">Draft one player per era across QB, RB, WR, TE, DB, and S</div></div>
         <div class="rule-item"><div class="rule-num">5</div><div class="rule-text">Five eras: 1970s through 2010s — each used only once</div></div>
-        <div class="rule-item"><div class="rule-num">2</div><div class="rule-text">One team skip and one era skip — use them wisely</div></div>
+        <div class="rule-item"><div class="rule-num">2</div><div class="rule-text">Two era skips available — use them wisely when the era doesn't fit your strategy</div></div>
         <div class="rule-item"><div class="rule-num">17-0</div><div class="rule-text">Maximize all categories across every position to achieve perfection</div></div>
       </div>
     </div>
@@ -269,10 +269,7 @@ body{font-family:'Oswald',sans-serif;background:#0a0f1a;color:#e8e0d0;min-height
           <div class="section-header" id="pick-header">Select your player</div>
           <div class="skip-inline">
             <button class="skip-inline-btn" id="skip-era-btn" onclick="skipEra()" disabled>
-              <span id="era-skips-left">1</span> Era Skip
-            </button>
-            <button class="skip-inline-btn" id="skip-team-btn" onclick="skipTeam()" disabled>
-              <span id="team-skips-left">1</span> Team Skip
+              <span id="era-skips-left">2</span> Era Skip
             </button>
           </div>
         </div>
@@ -397,7 +394,7 @@ const SORT_KEYS={
 };
 
 let gameMode='classic';
-let state={round:0,roster:[],teamSkips:1,eraSkips:1,currentEra:null,currentTeam:null,spun:false,totalRating:0,usedEras:[],currentPool:[],currentPage:0,sortKey:'rating',eraQueue:[]};
+let state={round:0,roster:[],eraSkips:2,currentEra:null,currentTeam:null,spun:false,totalRating:0,usedEras:[],currentPool:[],currentPage:0,sortKey:'rating',eraQueue:[]};
 
 // Build a shuffled era queue ensuring even distribution
 function buildEraQueue(){
@@ -435,7 +432,7 @@ function startGame(){
 }
 
 function resetGame(){
-  state={round:0,roster:[],teamSkips:1,eraSkips:1,currentEra:null,currentTeam:null,spun:false,totalRating:0,usedEras:[],currentPool:[],currentPage:0,sortKey:'rating',eraQueue:[]};
+  state={round:0,roster:[],eraSkips:2,currentEra:null,currentTeam:null,spun:false,totalRating:0,usedEras:[],currentPool:[],currentPage:0,sortKey:'rating',eraQueue:[]};
   ALL_SCREENS.forEach(s=>document.getElementById(s).classList.add('hidden'));
   document.getElementById('intro-screen').classList.remove('hidden');
   document.getElementById('simulate-btn').disabled=true;
@@ -462,9 +459,7 @@ function resetRound(){
 
 function updateSkipBtns(){
   document.getElementById('skip-era-btn').disabled=state.eraSkips===0;
-  document.getElementById('skip-team-btn').disabled=state.teamSkips===0;
   document.getElementById('era-skips-left').textContent=state.eraSkips;
-  document.getElementById('team-skips-left').textContent=state.teamSkips;
 }
 
 function updatePips(){
@@ -543,15 +538,6 @@ function spinSlot(){
       setTimeout(showPlayers,400);
     }
   },75);
-}
-
-function skipTeam(){
-  if(!state.spun||state.teamSkips<=0)return;
-  state.teamSkips--;
-  state.currentTeam=TEAMS[Math.floor(Math.random()*TEAMS.length)];
-  document.getElementById('slot-team').textContent=state.currentTeam;
-  updateSkipBtns();
-  showPlayers();
 }
 
 function skipEra(){
